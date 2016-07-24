@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2011, 2015  AO Industries, Inc.
+ * Copyright (C) 2011, 2015, 2016  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -29,9 +29,9 @@ package com.aoindustries.cron;
  */
 public class MultiSchedule implements Schedule {
 
-    private final Iterable<Schedule> schedules;
+    private final Iterable<? extends Schedule> schedules;
 
-    public MultiSchedule(Iterable<Schedule> schedules) {
+    public MultiSchedule(Iterable<? extends Schedule> schedules) {
         this.schedules = schedules;
     }
 
