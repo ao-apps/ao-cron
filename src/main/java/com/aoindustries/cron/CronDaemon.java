@@ -62,9 +62,9 @@ public final class CronDaemon {
 	 */
 	private static CronDaemon runningDaemon;
 
-	private static final List<CronJob> cronJobs=new ArrayList<>();
-	private static final List<Logger> loggers=new ArrayList<>();
-	private static final List<CronDaemonThread> runningJobs=new ArrayList<>();
+	private static final List<CronJob> cronJobs=new ArrayList<CronJob>();
+	private static final List<Logger> loggers=new ArrayList<Logger>();
+	private static final List<CronDaemonThread> runningJobs=new ArrayList<CronDaemonThread>();
 
 	/**
 	 * Adds a <code>CronJob</code> to the list of jobs.  If the job is already
