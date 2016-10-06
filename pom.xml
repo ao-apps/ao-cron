@@ -214,9 +214,6 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 							<header><![CDATA[<a href="${project.url}">${project.name}<a>]]></header>
 							<keywords>true</keywords><!-- Help internal search systems -->
 							<quiet>true</quiet>
-							<links>
-								<link>https://www.aoindustries.com/docs/aocode-public/</link>
-							</links>
 						</configuration>
 						<version>2.10.4</version>
 						<executions>
@@ -246,12 +243,4 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 			</build>
 		</profile>
 	</profiles>
-
-	<dependencies>
-		<dependency>
-			<groupId>com.aoindustries</groupId>
-			<artifactId>aocode-public</artifactId>
-			<version>1.7.0</version>
-		</dependency>
-	</dependencies>
 </project>

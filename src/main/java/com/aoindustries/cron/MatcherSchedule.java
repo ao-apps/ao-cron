@@ -80,7 +80,7 @@ public class MatcherSchedule implements Schedule {
 	public static Schedule parseSchedule(String str) throws IllegalArgumentException {
 		// Handle multiple schedules separated by semicolon
 		if(str.indexOf(';')!=-1) {
-			Collection<Schedule> schedules = new ArrayList<>();
+			Collection<Schedule> schedules = new ArrayList<Schedule>();
 			StringTokenizer st = new StringTokenizer(";");
 			while(st.hasMoreTokens()) schedules.add(parseSchedule(st.nextToken()));
 			return new MultiSchedule(schedules);
