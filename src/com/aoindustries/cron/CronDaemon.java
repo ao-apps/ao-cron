@@ -193,6 +193,8 @@ public final class CronDaemon {
 										Thread.sleep(sleepTime);
 									} catch(InterruptedException err) {
 										logger.log(Level.WARNING, null, err);
+										// Restore the interrupted status
+										Thread.currentThread().interrupt();
 									}
 								}
 							} catch(ThreadDeath TD) {
@@ -203,6 +205,8 @@ public final class CronDaemon {
 									Thread.sleep(30000);
 								} catch(InterruptedException err) {
 									logger.log(Level.WARNING, null, err);
+									// Restore the interrupted status
+									Thread.currentThread().interrupt();
 								}
 							}
 						}
