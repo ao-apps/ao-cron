@@ -39,135 +39,135 @@ import java.util.StringTokenizer;
  */
 public class MatcherSchedule implements Schedule {
 
-    private static final Schedule YEARLY = new Schedule() {
-        @Override
-        public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
-            return minute==0 && hour==0 && dayOfMonth==1 && month==Calendar.JANUARY;
-        }
-    };
+	private static final Schedule YEARLY = new Schedule() {
+		@Override
+		public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
+			return minute==0 && hour==0 && dayOfMonth==1 && month==Calendar.JANUARY;
+		}
+	};
 
-    private static final Schedule MONTHLY = new Schedule() {
-        @Override
-        public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
-            return minute==0 && hour==0 && dayOfMonth==1;
-        }
-    };
+	private static final Schedule MONTHLY = new Schedule() {
+		@Override
+		public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
+			return minute==0 && hour==0 && dayOfMonth==1;
+		}
+	};
 
-    private static final Schedule WEEKLY = new Schedule() {
-        @Override
-        public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
-            return minute==0 && hour==0 && dayOfWeek==Calendar.SUNDAY;
-        }
-    };
+	private static final Schedule WEEKLY = new Schedule() {
+		@Override
+		public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
+			return minute==0 && hour==0 && dayOfWeek==Calendar.SUNDAY;
+		}
+	};
 
-    private static final Schedule DAILY = new Schedule() {
-        @Override
-        public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
-            return minute==0 && hour==0;
-        }
-    };
+	private static final Schedule DAILY = new Schedule() {
+		@Override
+		public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
+			return minute==0 && hour==0;
+		}
+	};
 
-    private static final Schedule HOURLY = new Schedule() {
-        @Override
-        public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
-            return minute==0;
-        }
-    };
+	private static final Schedule HOURLY = new Schedule() {
+		@Override
+		public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
+			return minute==0;
+		}
+	};
 
-    /**
-     * Parses an entire schedule.
-     */
-    public static Schedule parseSchedule(String str) throws IllegalArgumentException {
-        // Handle multiple schedules separated by semicolon
-        if(str.indexOf(';')!=-1) {
-            Collection<Schedule> schedules = new ArrayList<>();
-            StringTokenizer st = new StringTokenizer(";");
-            while(st.hasMoreTokens()) schedules.add(parseSchedule(st.nextToken()));
-            return new MultiSchedule(schedules);
-        }
-        // Special strings
-        if("@yearly".equalsIgnoreCase(str) || "@annually".equalsIgnoreCase(str)) return YEARLY;
-        if("@monthly".equalsIgnoreCase(str)) return MONTHLY;
-        if("@weekly".equalsIgnoreCase(str)) return WEEKLY;
-        if("@daily".equalsIgnoreCase(str) || "@midnight".equalsIgnoreCase(str)) return DAILY;
-        if("@hourly".equalsIgnoreCase(str)) return HOURLY;
-        // Individual fields
-        StringTokenizer st = new StringTokenizer(str);
-        if(!st.hasMoreTokens()) throw new IllegalArgumentException();
-        Matcher minute = Matcher.parseMinute(st.nextToken());
-        if(!st.hasMoreTokens()) throw new IllegalArgumentException();
-        Matcher hour = Matcher.parseHour(st.nextToken());
-        if(!st.hasMoreTokens()) throw new IllegalArgumentException();
-        Matcher dayOfMonth = Matcher.parseDayOfMonth(st.nextToken());
-        if(!st.hasMoreTokens()) throw new IllegalArgumentException();
-        Matcher month = Matcher.parseMonth(st.nextToken());
-        if(!st.hasMoreTokens()) throw new IllegalArgumentException();
-        Matcher dayOfWeek = Matcher.parseDayOfWeek(st.nextToken());
-        if(st.hasMoreTokens()) throw new IllegalArgumentException();
-        return new MatcherSchedule(minute, hour, dayOfMonth, month, dayOfWeek);
-    }
+	/**
+	 * Parses an entire schedule.
+	 */
+	public static Schedule parseSchedule(String str) throws IllegalArgumentException {
+		// Handle multiple schedules separated by semicolon
+		if(str.indexOf(';')!=-1) {
+			Collection<Schedule> schedules = new ArrayList<>();
+			StringTokenizer st = new StringTokenizer(";");
+			while(st.hasMoreTokens()) schedules.add(parseSchedule(st.nextToken()));
+			return new MultiSchedule(schedules);
+		}
+		// Special strings
+		if("@yearly".equalsIgnoreCase(str) || "@annually".equalsIgnoreCase(str)) return YEARLY;
+		if("@monthly".equalsIgnoreCase(str)) return MONTHLY;
+		if("@weekly".equalsIgnoreCase(str)) return WEEKLY;
+		if("@daily".equalsIgnoreCase(str) || "@midnight".equalsIgnoreCase(str)) return DAILY;
+		if("@hourly".equalsIgnoreCase(str)) return HOURLY;
+		// Individual fields
+		StringTokenizer st = new StringTokenizer(str);
+		if(!st.hasMoreTokens()) throw new IllegalArgumentException();
+		Matcher minute = Matcher.parseMinute(st.nextToken());
+		if(!st.hasMoreTokens()) throw new IllegalArgumentException();
+		Matcher hour = Matcher.parseHour(st.nextToken());
+		if(!st.hasMoreTokens()) throw new IllegalArgumentException();
+		Matcher dayOfMonth = Matcher.parseDayOfMonth(st.nextToken());
+		if(!st.hasMoreTokens()) throw new IllegalArgumentException();
+		Matcher month = Matcher.parseMonth(st.nextToken());
+		if(!st.hasMoreTokens()) throw new IllegalArgumentException();
+		Matcher dayOfWeek = Matcher.parseDayOfWeek(st.nextToken());
+		if(st.hasMoreTokens()) throw new IllegalArgumentException();
+		return new MatcherSchedule(minute, hour, dayOfMonth, month, dayOfWeek);
+	}
 
-    private final Matcher minute;
-    private final Matcher hour;
-    private final Matcher dayOfMonth;
-    private final Matcher month;
-    private final Matcher dayOfWeek;
+	private final Matcher minute;
+	private final Matcher hour;
+	private final Matcher dayOfMonth;
+	private final Matcher month;
+	private final Matcher dayOfWeek;
 
-    public MatcherSchedule(
-        Matcher minute,
-        Matcher hour,
-        Matcher dayOfMonth,
-        Matcher month,
-        Matcher dayOfWeek
-    ) {
-        this.minute = minute;
-        this.hour = hour;
-        this.dayOfMonth = dayOfMonth;
-        this.month = month;
-        this.dayOfWeek = dayOfWeek;
-    }
+	public MatcherSchedule(
+		Matcher minute,
+		Matcher hour,
+		Matcher dayOfMonth,
+		Matcher month,
+		Matcher dayOfWeek
+	) {
+		this.minute = minute;
+		this.hour = hour;
+		this.dayOfMonth = dayOfMonth;
+		this.month = month;
+		this.dayOfWeek = dayOfWeek;
+	}
 
-    @Override
-    public String toString() {
-        return minute + " " + hour + " " + dayOfMonth + " " + month + " " + dayOfWeek;
-    }
+	@Override
+	public String toString() {
+		return minute + " " + hour + " " + dayOfMonth + " " + month + " " + dayOfWeek;
+	}
 
-    public Matcher getMinute() {
-        return minute;
-    }
+	public Matcher getMinute() {
+		return minute;
+	}
 
-    public Matcher getHour() {
-        return hour;
-    }
+	public Matcher getHour() {
+		return hour;
+	}
 
-    public Matcher getDayOfMonth() {
-        return dayOfMonth;
-    }
+	public Matcher getDayOfMonth() {
+		return dayOfMonth;
+	}
 
-    /**
-     * Note: months are 1-12 like cron, not 0-11 like Calendar.
-     */
-    public Matcher getMonth() {
-        return month;
-    }
+	/**
+	 * Note: months are 1-12 like cron, not 0-11 like Calendar.
+	 */
+	public Matcher getMonth() {
+		return month;
+	}
 
-    /**
-     * Note: Sunday is 0, not 1 like Calendar.
-     */
-    public Matcher getDayOfWeek() {
-        return dayOfWeek;
-    }
+	/**
+	 * Note: Sunday is 0, not 1 like Calendar.
+	 */
+	public Matcher getDayOfWeek() {
+		return dayOfWeek;
+	}
 
-    @Override
-    public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
-        return
-            this.minute.matches(minute)
-            && this.hour.matches(hour)
-            && this.month.matches(1 + (month - Calendar.JANUARY))
-            && (
-                this.dayOfMonth.matches(dayOfMonth)
-                || this.dayOfWeek.matches(0 + (dayOfWeek - Calendar.SUNDAY))
-            )
-        ;
-    }
+	@Override
+	public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
+		return
+			this.minute.matches(minute)
+			&& this.hour.matches(hour)
+			&& this.month.matches(1 + (month - Calendar.JANUARY))
+			&& (
+				this.dayOfMonth.matches(dayOfMonth)
+				|| this.dayOfWeek.matches(0 + (dayOfWeek - Calendar.SUNDAY))
+			)
+		;
+	}
 }

@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2011, 2015  AO Industries, Inc.
+ * Copyright (C) 2011, 2015, 2016  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -29,14 +29,14 @@ package com.aoindustries.cron;
  */
 public interface Schedule {
 
-    /**
-     * Determine if the job should run right now.
-     *
-     * @param minute 0-59
-     * @param hour 0-23
-     * @param dayOfMonth 1-31
-     * @param month 0-11
-     * @param dayOfWeek 1-7, <code>Calendar.SUNDAY</code> through <code>Calendar.SATURDAY</code>
-     */
-    boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year);
+	/**
+	 * Determine if the job should run right now.
+	 *
+	 * @param minute 0-59
+	 * @param hour 0-23
+	 * @param dayOfMonth 1-31
+	 * @param month 0-11
+	 * @param dayOfWeek 1-7, <code>Calendar.SUNDAY</code> through <code>Calendar.SATURDAY</code>
+	 */
+	boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year);
 }

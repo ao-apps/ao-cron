@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2011, 2015  AO Industries, Inc.
+ * Copyright (C) 2011, 2015, 2016  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -31,13 +31,13 @@ package com.aoindustries.cron;
  */
 public enum CronJobScheduleMode {
 
-    /**
-     * Indicates the jobs should be ran concurrently when running together.
-     */
-    CONCURRENT,
+	/**
+	 * Indicates the jobs should be ran concurrently when running together.
+	 */
+	CONCURRENT,
 
-    /**
-     * Indicates the new job should be skipped to avoid running the same job concurrently.
-     */
-    SKIP
+	/**
+	 * Indicates the new job should be skipped to avoid running the same job concurrently.
+	 */
+	SKIP
 }
