@@ -211,7 +211,8 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
 						<configuration>
-							<header><![CDATA[<a href="${project.url}">${project.name}<a>]]></header>
+							<packagesheader><![CDATA[<a target="_top" href="${project.url}">${project.name} ${project.version}</a>]]></packagesheader>
+							<header><![CDATA[<a target="_top" href="${project.url}">${project.name} ${project.version}</a>]]></header>
 							<keywords>true</keywords><!-- Help internal search systems -->
 							<quiet>true</quiet>
 						</configuration>
