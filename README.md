@@ -4,7 +4,7 @@ Java cron-like task scheduling library.
 ## Project Links
 * [Project Home](https://www.aoindustries.com/ao-cron/)
 * [API Docs](https://www.aoindustries.com/ao-cron/apidocs/)
-* [Maven Central Repository](http://search.maven.org/#search|gav|1|g:%22com.aoindustries%22%20AND%20a:%22ao-cron%22)
+* [Maven Central Repository](https://search.maven.org/#search|gav|1|g:%22com.aoindustries%22%20AND%20a:%22ao-cron%22)
 * [GitHub](https://github.com/aoindustries/ao-cron)
 
 ## Contact Us
