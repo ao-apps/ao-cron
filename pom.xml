@@ -54,6 +54,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 		<developer>
 			<name>AO Industries, Inc.</name>
 			<email>support@aoindustries.com</email>
+			<url>https://www.aoindustries.com/</url>
 			<organization>AO Industries, Inc.</organization>
 			<organizationUrl>https://www.aoindustries.com/</organizationUrl>
 		</developer>
@@ -62,7 +63,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 	<scm>
 		<connection>scm:git:git://github.com/aoindustries/ao-cron.git</connection>
 		<developerConnection>scm:git:git@github.com:aoindustries/ao-cron.git</developerConnection>
-		<url>http://github.com/aoindustries/ao-cron</url>
+		<url>https://github.com/aoindustries/ao-cron</url>
 		<tag>HEAD</tag>
 	</scm>
 
