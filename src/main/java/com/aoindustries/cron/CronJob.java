@@ -50,7 +50,7 @@ public interface CronJob {
 	/**
 	 * Performs the scheduled task.
 	 *
-	 * @see #isCronJobScheduled
+	 * @see Schedule#isCronJobScheduled(int, int, int, int, int, int)
 	 */
 	void runCronJob(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year);
 
