@@ -57,7 +57,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 		<changelog:release
 			projectName="@{project.name}"
 			version="1.0.1"
-			dateCreated="2016-10-20T18:05:00-0500"
+			datePublished="2016-10-20T18:05:00-0500"
 			groupId="@{project.groupId}"
 			artifactId="@{project.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -71,7 +71,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 		<changelog:release
 			projectName="@{project.name}"
 			version="1.0.0"
-			dateCreated="2016-10-05T20:37:00-0500"
+			datePublished="2016-10-05T20:37:00-0500"
 			groupId="@{project.groupId}"
 			artifactId="@{project.artifactId}"
 			scmUrl="@{project.scm.url}"
