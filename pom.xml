@@ -37,7 +37,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 	<packaging>jar</packaging>
 
 	<name>AO Cron</name>
-	<url>https://www.aoindustries.com${bookPath}/</url><!-- Can't inherit due to multi-module -->
+	<url>https://aoindustries.com${bookPath}/</url><!-- Can't inherit due to multi-module -->
 	<description>Java cron-like task scheduling library.</description>
 	<inceptionYear>2004</inceptionYear>
 
