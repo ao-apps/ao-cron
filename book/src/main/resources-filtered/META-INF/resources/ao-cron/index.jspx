@@ -59,7 +59,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 			<ao:a rel="nofollow" href="https://docs.oracle.com/javase/${currentPage.properties.javaVersion}/docs/api/">
 				<ao:img src="/badge/java-${currentPage.properties.javaVersion}.svg" alt="java version" />
 			</ao:a>
-			<ao:a rel="nofollow" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">
+			<ao:a rel="nofollow" href="https://www.gnu.org/licenses/lgpl-3.0">
 				<ao:img src="/badge/license-lgplv3.svg" alt="license" />
 			</ao:a>
 			<!-- TODO: Snapshot version as yellow dynamic from changelog, direct from shield.io? -->
