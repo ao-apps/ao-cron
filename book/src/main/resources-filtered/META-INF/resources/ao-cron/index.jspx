@@ -23,6 +23,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 <jsp:root
 	xmlns:ao="https://aoindustries.com/ao-taglib/"
 	xmlns:core="https://semanticcms.com/core/taglib/"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:jsp="http://java.sun.com/JSP/Page"
 	xmlns:section="https://semanticcms.com/section/taglib/"
 	version="2.1"
