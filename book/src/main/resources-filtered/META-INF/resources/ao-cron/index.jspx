@@ -23,7 +23,6 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 <jsp:root
 	xmlns:ao="https://aoindustries.com/ao-taglib/"
 	xmlns:core="https://semanticcms.com/core/taglib/"
-	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:jsp="http://java.sun.com/JSP/Page"
 	xmlns:section="https://semanticcms.com/section/taglib/"
 	version="2.1"
@@ -33,17 +32,38 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 		title="@{documented.name}"
 		description="@{documented.description}"
 		datePublished="2016-10-16T21:59:00-0500"
-		dateModified="2017-07-13T17:17:50-0500"
+		dateModified="2017-07-14T02:49:09-0500"
 		property.projectStatus="current-stable"
-		property.projectStatusDisplay="Current Stable"
+		property.managementStatus="production"
+		property.packagingStatus="active"
+		property.semanticVersioning="2.0.0"
+		property.javaVersion="6"
 	>
 		<core:child page="changelog.jspx" />
 		<core:child page="apidocs/index.jspx" />
-		<div class="project-status-bar">
-			<core:link book="/" page="/life-cycle.jspx" element="project" class="life-cycle project #{fn:escapeXml(currentPage.properties.projectStatus)}">
-				<ao:out value="${currentPage.properties.projectStatusDisplay}" />
+		<p class="project-status-bar">
+			<core:link book="/" page="/life-cycle.jspx" element="project">
+				<ao:img src="/badge/project-${currentPage.properties.projectStatus}.svg" alt="project status" />
 			</core:link>
-		</div>
+			<core:link book="/" page="/life-cycle.jspx" element="management">
+				<ao:img src="/badge/management-${currentPage.properties.managementStatus}.svg" alt="management status" />
+			</core:link>
+			<core:link book="/" page="/life-cycle.jspx" element="packaging">
+				<ao:img src="/badge/packaging-${currentPage.properties.packagingStatus}.svg" alt="packaging status" />
+			</core:link>
+			<ao:a rel="nofollow" href="http://semver.org/spec/v${currentPage.properties.semanticVersioning}.html">
+				<ao:img src="/badge/semver-${currentPage.properties.semanticVersioning}.svg" alt="semantic versioning" />
+			</ao:a>
+			<ao:a rel="nofollow" href="https://docs.oracle.com/javase/${currentPage.properties.javaVersion}/docs/api/">
+				<ao:img src="/badge/java-${currentPage.properties.javaVersion}.svg" alt="java version" />
+			</ao:a>
+			<ao:a rel="nofollow" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">
+				<ao:img src="/badge/license-lgplv3.svg" alt="license" />
+			</ao:a>
+			<!-- TODO: Snapshot version as yellow dynamic from changelog, direct from shield.io? -->
+			<!-- TODO: Latest release version as green dynamic from changelog, direct from shield.io? -->
+			<!-- TODO: Latest package from Maven dynamic from changelog, direct from shield.io? -->
+		</p>
 		<p>
 			@{documented.description}
 		</p>
