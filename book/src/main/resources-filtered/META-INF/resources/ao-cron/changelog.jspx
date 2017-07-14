@@ -1,6 +1,6 @@
 <!--
 ao-cron - Java cron-like task scheduling library.
-Copyright (C) 2016  AO Industries, Inc.
+Copyright (C) 2016, 2017  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -36,7 +36,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T19:13:47-0500"
-		dateModified="2016-11-15T18:04:10-0600"
+		dateModified="2017-07-13T20:11:52-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-cron:pom.version}" />
@@ -51,7 +51,12 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 				groupId="@{documented.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{documented.scm.url}"
-			/>
+			>
+				<ul>
+					<li>Added <core:link book="/" page="/life-cycle.jspx" /> to project documentation.</li>
+					<li>Updated dependencies.</li>
+				</ul>
+			</changelog:release>
 		</c:if>
 
 		<changelog:release
