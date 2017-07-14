@@ -16,7 +16,7 @@
 	<a href="https://docs.oracle.com/javase/6/docs/api/">
 		<img src="https://aoindustries.com/badge/java-6.svg" alt="java version" />
 	</a>
-	<a rel="nofollow" href="https://www.gnu.org/licenses/lgpl-3.0.en.html">
+	<a href="https://www.gnu.org/licenses/lgpl-3.0">
 		<img src="https://aoindustries.com/badge/license-lgplv3.svg" alt="license" />
 	</a>
 </p>
