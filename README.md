@@ -9,6 +9,7 @@
 	<a href="https://aoindustries.com/life-cycle.jspx#packaging">
 		<img src="https://aoindustries.com/badge/packaging-active.svg" alt="packaging status" />
 	</a>
+	<br />
 	<a href="http://semver.org/spec/v2.0.0.html">
 		<img src="https://aoindustries.com/badge/semver-2.0.0.svg" alt="semantic versioning" />
 	</a>
