@@ -28,11 +28,12 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 	version="2.1"
 >
 	<jsp:directive.page language="java" pageEncoding="UTF-8" session="false" />
+	<!-- TODO: Get properties from project settings where possible, maybe from generated .properties -->
 	<core:page
 		title="@{documented.name}"
 		description="@{documented.description}"
 		datePublished="2016-10-16T21:59:00-0500"
-		dateModified="2017-07-14T02:49:09-0500"
+		dateModified="2017-07-14T03:08:07-0500"
 		property.projectStatus="current-stable"
 		property.managementStatus="production"
 		property.packagingStatus="active"
@@ -51,6 +52,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 			<core:link book="/" page="/life-cycle.jspx" element="packaging">
 				<ao:img src="/badge/packaging-${currentPage.properties.packagingStatus}.svg" alt="packaging status" />
 			</core:link>
+			<br />
 			<ao:a rel="nofollow" href="http://semver.org/spec/v${currentPage.properties.semanticVersioning}.html">
 				<ao:img src="/badge/semver-${currentPage.properties.semanticVersioning}.svg" alt="semantic versioning" />
 			</ao:a>
