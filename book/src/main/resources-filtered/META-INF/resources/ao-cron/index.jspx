@@ -41,7 +41,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 		<core:child page="apidocs/index.jspx" />
 		<div class="project-status-bar">
 			<core:link book="/" page="/life-cycle.jspx" element="project" class="life-cycle project #{fn:escapeXml(currentPage.properties.projectStatus)}">
-				<ao:out value="${currentPage.properties.property.projectStatusDisplay}" />
+				<ao:out value="${currentPage.properties.projectStatusDisplay}" />
 			</core:link>
 		</div>
 		<p>
