@@ -32,34 +32,19 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 		title="@{documented.name}"
 		description="@{documented.description}"
 		datePublished="2016-10-16T21:59:00-0500"
-		dateModified="2017-07-15T00:43:11-0500"
+		dateModified="2017-07-15T14:18:32-0500"
 	>
 		<core:child page="changelog.jspx" />
 		<core:child page="apidocs/index.jspx" />
-		<p class="project-status-bar">
-			<core:link book="/" page="/life-cycle.jspx" element="project">
-				<ao:img src="/badge/project-${currentPage.properties.projectStatus}.svg" alt="project status" />
-			</core:link>
-			<core:link book="/" page="/life-cycle.jspx" element="management">
-				<ao:img src="/badge/management-${currentPage.properties.managementStatus}.svg" alt="management status" />
-			</core:link>
-			<core:link book="/" page="/life-cycle.jspx" element="packaging">
-				<ao:img src="/badge/packaging-${currentPage.properties.packagingStatus}.svg" alt="packaging status" />
-			</core:link>
-			<br />
-			<ao:a rel="nofollow" href="http://semver.org/spec/v${currentPage.properties.semanticVersioning}.html">
-				<ao:img src="/badge/semver-${currentPage.properties.semanticVersioning}.svg" alt="semantic versioning" />
-			</ao:a>
-			<ao:a rel="nofollow" href="@{documented.javac.link.javaApi}">
-				<ao:img src="/badge/java-${currentPage.properties.javaVersion}.svg" alt="java version" />
-			</ao:a>
-			<ao:a rel="nofollow" href="https://www.gnu.org/licenses/lgpl-3.0">
-				<ao:img src="/badge/license-lgplv3.svg" alt="license" />
-			</ao:a>
-			<!-- TODO: Snapshot version as yellow dynamic from changelog, direct from shield.io? -->
-			<!-- TODO: Latest release version as green dynamic from changelog, direct from shield.io? -->
-			<!-- TODO: Latest package from Maven dynamic from changelog, direct from shield.io? -->
-		</p>
+		<ao:include
+			page="/ao-badges/badges.inc.jspx"
+			arg.projectStatus="${currentPage.properties.projectStatus}"
+			arg.managementStatus="${currentPage.properties.managementStatus}"
+			arg.packagingStatus="${currentPage.properties.packagingStatus}"
+			arg.semanticVersioning="${currentPage.properties.semanticVersioning}"
+			arg.javaVersion="${currentPage.properties.javaVersion}"
+			arg.license="lgpl-3.0"
+		/>
 		<p>
 			@{documented.description}
 		</p>
