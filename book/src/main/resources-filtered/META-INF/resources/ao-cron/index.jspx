@@ -32,7 +32,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 		title="@{documented.name}"
 		description="@{documented.description}"
 		datePublished="2016-10-16T21:59:00-0500"
-		dateModified="2017-07-15T14:18:32-0500"
+		dateModified="2017-07-15T16:49:03-0500"
 	>
 		<core:child page="changelog.jspx" />
 		<core:child page="apidocs/index.jspx" />
@@ -43,7 +43,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 			arg.packagingStatus="${currentPage.properties.packagingStatus}"
 			arg.semanticVersioning="${currentPage.properties.semanticVersioning}"
 			arg.javaVersion="${currentPage.properties.javaVersion}"
-			arg.license="lgpl-3.0"
+			arg.license="${currentPage.properties.license}"
 		/>
 		<p>
 			@{documented.description}
