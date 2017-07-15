@@ -20,6 +20,7 @@
 		<img src="https://aoindustries.com/ao-badges/license-lgpl-3.0.svg" alt="license: LGPL v3" />
 	</a>
 </p>
+
 Java cron-like task scheduling library.
 
 ## Project Links
