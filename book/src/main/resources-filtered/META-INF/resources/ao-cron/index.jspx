@@ -41,8 +41,8 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 			arg.projectStatus="${currentPage.properties.projectStatus}"
 			arg.managementStatus="${currentPage.properties.managementStatus}"
 			arg.packagingStatus="${currentPage.properties.packagingStatus}"
-			arg.semanticVersioning="${currentPage.properties.semanticVersioning}"
 			arg.javaVersion="${currentPage.properties.javaVersion}"
+			arg.semanticVersioning="${currentPage.properties.semanticVersioning}"
 			arg.license="${currentPage.properties.license}"
 		/>
 		<p>
