@@ -32,7 +32,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 		title="@{documented.name}"
 		description="@{documented.description}"
 		datePublished="2016-10-16T21:59:00-0500"
-		dateModified="2017-07-15T00:35:00-0500"
+		dateModified="2017-07-15T00:43:11-0500"
 	>
 		<core:child page="changelog.jspx" />
 		<core:child page="apidocs/index.jspx" />
@@ -50,7 +50,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 			<ao:a rel="nofollow" href="http://semver.org/spec/v${currentPage.properties.semanticVersioning}.html">
 				<ao:img src="/badge/semver-${currentPage.properties.semanticVersioning}.svg" alt="semantic versioning" />
 			</ao:a>
-			<ao:a rel="nofollow" href="@{javac.link.javaApi}">
+			<ao:a rel="nofollow" href="@{documented.javac.link.javaApi}">
 				<ao:img src="/badge/java-${currentPage.properties.javaVersion}.svg" alt="java version" />
 			</ao:a>
 			<ao:a rel="nofollow" href="https://www.gnu.org/licenses/lgpl-3.0">
