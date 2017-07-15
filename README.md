@@ -1,23 +1,23 @@
 # [<img src="ao-logo.png" alt="AO Logo" width="35" height="40">](https://aoindustries.com/) [AO Cron](https://aoindustries.com/ao-cron/)
 <p>
 	<a href="https://aoindustries.com/life-cycle.jspx#project">
-		<img src="https://aoindustries.com/badge/project-current-stable.svg" alt="project status" />
+		<img src="https://aoindustries.com/ao-badges/project-current-stable.svg" alt="project: current stable" />
 	</a>
 	<a href="https://aoindustries.com/life-cycle.jspx#management">
-		<img src="https://aoindustries.com/badge/management-production.svg" alt="management status" />
+		<img src="https://aoindustries.com/ao-badges/management-production.svg" alt="management: production" />
 	</a>
 	<a href="https://aoindustries.com/life-cycle.jspx#packaging">
-		<img src="https://aoindustries.com/badge/packaging-active.svg" alt="packaging status" />
+		<img src="https://aoindustries.com/ao-badges/packaging-active.svg" alt="packaging: active" />
 	</a>
 	<br />
-	<a href="http://semver.org/spec/v2.0.0.html">
-		<img src="https://aoindustries.com/badge/semver-2.0.0.svg" alt="semantic versioning" />
-	</a>
 	<a href="https://docs.oracle.com/javase/6/docs/api/">
-		<img src="https://aoindustries.com/badge/java-1.6.svg" alt="java version" />
+		<img src="https://aoindustries.com/ao-badges/java-6.svg" alt="java: &gt;= 6" />
+	</a>
+	<a href="http://semver.org/spec/v2.0.0.html">
+		<img src="https://aoindustries.com/ao-badges/semver-2.0.0.svg" alt="semantic versioning: 2.0.0" />
 	</a>
 	<a href="https://www.gnu.org/licenses/lgpl-3.0">
-		<img src="https://aoindustries.com/badge/license-lgplv3.svg" alt="license" />
+		<img src="https://aoindustries.com/ao-badges/license-lgpl-3.0.svg" alt="license: LGPL v3" />
 	</a>
 </p>
 Java cron-like task scheduling library.
