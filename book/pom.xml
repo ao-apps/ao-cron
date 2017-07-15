@@ -40,6 +40,8 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 		<!-- These values are copied from the project being documented -->
 		<documented.groupId>com.aoindustries</documented.groupId>
 		<documented.artifactId>ao-cron</documented.artifactId>
+		<documented.javaVersion>1.6</documented.javaVersion>
+		<documented.javac.link.javaApi>${javac.link.javaApi.jdk16}</documented.javac.link.javaApi>
 		<documented.name>AO Cron</documented.name>
 		<documented.url>https://aoindustries.com/${documented.artifactId}/</documented.url>
 		<documented.description>Java cron-like task scheduling library.</documented.description>
