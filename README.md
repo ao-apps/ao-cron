@@ -1,12 +1,12 @@
 # [<img src="ao-logo.png" alt="AO Logo" width="35" height="40">](https://aoindustries.com/) [AO Cron](https://aoindustries.com/ao-cron/)
 <p>
-	<a href="https://aoindustries.com/life-cycle.jspx#project">
+	<a href="https://aoindustries.com/life-cycle#project-current-stable">
 		<img src="https://aoindustries.com/ao-badges/project-current-stable.svg" alt="project: current stable" />
 	</a>
-	<a href="https://aoindustries.com/life-cycle.jspx#management">
+	<a href="https://aoindustries.com/life-cycle#management-production">
 		<img src="https://aoindustries.com/ao-badges/management-production.svg" alt="management: production" />
 	</a>
-	<a href="https://aoindustries.com/life-cycle.jspx#packaging">
+	<a href="https://aoindustries.com/life-cycle#packaging-active">
 		<img src="https://aoindustries.com/ao-badges/packaging-active.svg" alt="packaging: active" />
 	</a>
 	<br />
