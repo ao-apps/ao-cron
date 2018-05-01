@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013, 2015, 2016, 2018  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -193,8 +193,6 @@ public final class CronDaemon {
 										Thread.sleep(sleepTime);
 									} catch(InterruptedException err) {
 										logger.log(Level.WARNING, null, err);
-										// Restore the interrupted status
-										Thread.currentThread().interrupt();
 									}
 								}
 							} catch(ThreadDeath TD) {
@@ -205,8 +203,6 @@ public final class CronDaemon {
 									Thread.sleep(30000);
 								} catch(InterruptedException err) {
 									logger.log(Level.WARNING, null, err);
-									// Restore the interrupted status
-									Thread.currentThread().interrupt();
 								}
 							}
 						}
