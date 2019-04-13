@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 ao-cron - Java cron-like task scheduling library.
-Copyright (C) 2016, 2017, 2018  AO Industries, Inc.
+Copyright (C) 2016, 2017, 2018, 2019  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -68,7 +68,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 			scmUrl="@{documented.scm.url}"
 		>
 			<ul>
-				<li>Added <core:link book="/" page="/life-cycle" /> to project documentation.</li>
+				<li>Added <core:link book="/" page="/life-cycle.jspx" /> to project documentation.</li>
 				<li>Updated dependencies.</li>
 			</ul>
 		</changelog:release>
@@ -82,7 +82,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 			scmUrl="@{documented.scm.url}"
 		>
 			<ul>
-				<li>New <core:link book="/ao-oss-parent" page="/" /> POM to simplify <code>pom.xml</code> files.</li>
+				<li>New <core:link book="/ao-oss-parent" page="/index.jspx" /> POM to simplify <code>pom.xml</code> files.</li>
 				<li>Project documentation moved to per-project book in <ao:a href="https://semanticcms.com/">SemanticCMS</ao:a> format.</li>
 				<li>Added changelog as top-level project link.</li>
 			</ul>
