@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2011, 2013, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -66,7 +66,7 @@ abstract public class Matcher {
 		return parseMatcher(str, 1, 31, 32, nameMap);
 	}
 
-	private static final Map<String,Integer> monthNameMap = new HashMap<String,Integer>(23 * 4 / 3 + 1);
+	private static final Map<String,Integer> monthNameMap = new HashMap<>(23 * 4 / 3 + 1);
 	static {
 		monthNameMap.put("Jan", 1);
 		monthNameMap.put("January", 1);
@@ -101,7 +101,7 @@ abstract public class Matcher {
 		return parseMatcher(str, 1, 12, 13, monthNameMap);
 	}
 
-	private static final Map<String,Integer> dayOfWeekNameMap = new HashMap<String,Integer>(14 * 4 / 3 + 1);
+	private static final Map<String,Integer> dayOfWeekNameMap = new HashMap<>(14 * 4 / 3 + 1);
 	static {
 		dayOfWeekNameMap.put("Sun", 0);
 		dayOfWeekNameMap.put("Sunday", 0);
@@ -140,7 +140,7 @@ abstract public class Matcher {
 	public static Matcher parseMatcher(String str, int minimum, int maximum, int modulus, Map<String,Integer> nameMap) throws IllegalArgumentException {
 		// Handle list
 		if(str.indexOf(',')!=-1) {
-			Collection<Matcher> list = new ArrayList<Matcher>();
+			Collection<Matcher> list = new ArrayList<>();
 			StringTokenizer st = new StringTokenizer(str, ",");
 			while(st.hasMoreTokens()) list.add(parseMatcher(st.nextToken(), minimum, maximum, modulus, nameMap));
 			return new List(list);

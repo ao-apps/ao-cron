@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013, 2015, 2016, 2018  AO Industries, Inc.
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013, 2015, 2016, 2018, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -62,9 +62,9 @@ public final class CronDaemon {
 	 */
 	private static CronDaemon runningDaemon;
 
-	private static final List<CronJob> cronJobs=new ArrayList<CronJob>();
-	private static final List<Logger> loggers=new ArrayList<Logger>();
-	private static final List<CronDaemonThread> runningJobs=new ArrayList<CronDaemonThread>();
+	private static final List<CronJob> cronJobs=new ArrayList<>();
+	private static final List<Logger> loggers=new ArrayList<>();
+	private static final List<CronDaemonThread> runningJobs=new ArrayList<>();
 
 	/**
 	 * Adds a <code>CronJob</code> to the list of jobs.  If the job is already
