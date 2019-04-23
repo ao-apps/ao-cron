@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2011, 2012, 2013, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2011, 2012, 2013, 2015, 2016, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -80,7 +80,7 @@ public class MatcherSchedule implements Schedule {
 	public static Schedule parseSchedule(String str) throws IllegalArgumentException {
 		// Handle multiple schedules separated by semicolon
 		if(str.indexOf(';')!=-1) {
-			Collection<Schedule> schedules = new ArrayList<Schedule>();
+			Collection<Schedule> schedules = new ArrayList<>();
 			StringTokenizer st = new StringTokenizer(";");
 			while(st.hasMoreTokens()) schedules.add(parseSchedule(st.nextToken()));
 			return new MultiSchedule(schedules);
