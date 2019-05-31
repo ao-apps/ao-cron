@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2015, 2016, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -40,6 +40,7 @@ public interface CronJob {
 	 *
 	 * @see  CronJobScheduleMode
 	 */
+	// Java 8: default method: return CronJobScheduleMode.SKIP;
 	CronJobScheduleMode getCronJobScheduleMode();
 
 	/**
@@ -55,9 +56,10 @@ public interface CronJob {
 	void runCronJob(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year);
 
 	/**
-	 * Gets the Thread priority for this job.  Previously defaulted to <code>Thread.NORM_PRIORITY-2</code>
+	 * Gets the Thread priority for this job.  Previously defaulted to {@code Thread.NORM_PRIORITY - 2}
 	 *
 	 * @see  Thread#setPriority
 	 */
+	// Java 8: default method: return Thread.NORM_PRIORITY - 2;
 	int getCronJobThreadPriority();
 }
