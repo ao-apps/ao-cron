@@ -127,6 +127,9 @@ abstract public class Matcher {
 		return parseMatcher(str, 0, 7, 7, dayOfWeekNameMap);
 	}
 
+	// TODO: This is implemented as a interation for a case-insensitive.
+	//       Maybe this should instead put all items in the map lowercase, then lookup with toLowerCase.
+	//       If the case is required in the map, make a second map that stores all lowercased.
 	private static int parseInt(String str, Map<String,Integer> nameMap) throws NumberFormatException {
 		for(Map.Entry<String,Integer> entry : nameMap.entrySet()) {
 			if(entry.getKey().equalsIgnoreCase(str)) return entry.getValue();
