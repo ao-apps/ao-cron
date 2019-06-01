@@ -31,7 +31,7 @@ Java cron-like task scheduling library.
 * [GitHub](https://github.com/aoindustries/ao-cron)
 
 ## Evaluated Alternatives
-* [https://github.com/quartz-scheduler/quartz](Quartz Enterprise Job Scheduler) - Quartz does a lot - it really does.  This API does one simple thing well.
+* [Quartz Enterprise Job Scheduler](https://github.com/quartz-scheduler/quartz) - Quartz does a lot - it really does.  This API does one simple thing well.
 
 ## Contact Us
 For questions or support, please [contact us](https://aoindustries.com/contact):
