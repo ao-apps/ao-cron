@@ -24,6 +24,7 @@ package com.aoindustries.cron;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -126,7 +127,7 @@ public final class CronDaemon {
 
 					@Override
 					public void run() {
-						final Calendar cal=Calendar.getInstance();
+						final GregorianCalendar gcal = new GregorianCalendar();
 						int lastMinute = Integer.MIN_VALUE;
 						int lastHour = Integer.MIN_VALUE;
 						int lastDayOfMonth = Integer.MIN_VALUE;
@@ -139,13 +140,13 @@ public final class CronDaemon {
 							}
 							try {
 								// Get the new minute
-								cal.setTimeInMillis(System.currentTimeMillis());
-								int minute=cal.get(Calendar.MINUTE);
-								int hour=cal.get(Calendar.HOUR_OF_DAY);
-								int dayOfMonth=cal.get(Calendar.DAY_OF_MONTH);
-								int month=cal.get(Calendar.MONTH);
-								int dayOfWeek=cal.get(Calendar.DAY_OF_WEEK);
-								int year = cal.get(Calendar.YEAR);
+								gcal.setTimeInMillis(System.currentTimeMillis());
+								int minute=gcal.get(Calendar.MINUTE);
+								int hour=gcal.get(Calendar.HOUR_OF_DAY);
+								int dayOfMonth=gcal.get(Calendar.DAY_OF_MONTH);
+								int month=gcal.get(Calendar.MONTH);
+								int dayOfWeek=gcal.get(Calendar.DAY_OF_WEEK);
+								int year = gcal.get(Calendar.YEAR);
 
 								long sleepTime;
 								// If the minute hasn't changed, then system sleep is not very precise, sleep another second
@@ -181,10 +182,10 @@ public final class CronDaemon {
 									lastDayOfWeek = dayOfWeek;
 									lastYear = year;
 									// Find the time until the next minute starts.
-									cal.add(Calendar.MINUTE, 1);
-									cal.set(Calendar.SECOND, 0);
-									cal.set(Calendar.MILLISECOND, 0);
-									sleepTime = cal.getTimeInMillis() - System.currentTimeMillis();
+									gcal.add(Calendar.MINUTE, 1);
+									gcal.set(Calendar.SECOND, 0);
+									gcal.set(Calendar.MILLISECOND, 0);
+									sleepTime = gcal.getTimeInMillis() - System.currentTimeMillis();
 								}
 								if(sleepTime>0) {
 									// Be careful of system time changes
@@ -279,13 +280,13 @@ public final class CronDaemon {
 	 * @exception  IllegalStateException  If the job has not been added.
 	 */
 	public static void runImmediately(CronJob job) throws IllegalStateException {
-		Calendar cal=Calendar.getInstance();
-		int minute=cal.get(Calendar.MINUTE);
-		int hour=cal.get(Calendar.HOUR_OF_DAY);
-		int dayOfMonth=cal.get(Calendar.DAY_OF_MONTH);
-		int month=cal.get(Calendar.MONTH);
-		int dayOfWeek=cal.get(Calendar.DAY_OF_WEEK);
-		int year = cal.get(Calendar.YEAR);
+		GregorianCalendar gcal = new GregorianCalendar();
+		int minute = gcal.get(Calendar.MINUTE);
+		int hour = gcal.get(Calendar.HOUR_OF_DAY);
+		int dayOfMonth = gcal.get(Calendar.DAY_OF_MONTH);
+		int month = gcal.get(Calendar.MONTH);
+		int dayOfWeek = gcal.get(Calendar.DAY_OF_WEEK);
+		int year = gcal.get(Calendar.YEAR);
 		synchronized(cronJobs) {
 			for(int i=0, size=cronJobs.size(); i<size; i++) {
 				if(job==cronJobs.get(i)) {

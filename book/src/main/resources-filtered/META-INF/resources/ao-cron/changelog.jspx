@@ -36,7 +36,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T19:13:47-0500"
-		dateModified="2019-06-20T21:02:33-0500"
+		dateModified="2019-07-22T03:35:54-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-cron:pom.version}" />
@@ -51,7 +51,14 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 				groupId="@{documented.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{documented.scm.url}"
-			/>
+			>
+				<ul>
+					<li>
+						Changed from <code>Calendar.getInstance()</code> to <code>new GregorianCalendar()</code>
+						to work correctly independent of locale settings.
+					</li>
+				</ul>
+			</changelog:release>
 		</c:if>
 
 		<changelog:release
