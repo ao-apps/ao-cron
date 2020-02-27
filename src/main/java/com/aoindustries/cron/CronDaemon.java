@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013, 2015, 2016, 2018, 2019  AO Industries, Inc.
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013, 2015, 2016, 2018, 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -71,21 +71,23 @@ public final class CronDaemon {
 	 * Adds a <code>CronJob</code> to the list of jobs.  If the job is already
 	 * in the list, it will not be added again.
 	 */
-	public static void addCronJob(CronJob newJob, Logger logger) {
-		synchronized(cronJobs) {
-			boolean found = false;
-			for(CronJob cronJob : cronJobs) {
-				if(cronJob==newJob) {
-					found = true;
-					break;
+	public static void addCronJob(CronJob job, Logger logger) {
+		if(job != null) {
+			synchronized(cronJobs) {
+				boolean found = false;
+				for(CronJob cronJob : cronJobs) {
+					if(cronJob==job) {
+						found = true;
+						break;
+					}
 				}
-			}
-			if(!found) {
-				cronJobs.add(newJob);
-				loggers.add(logger);
-				if(runningDaemon==null) {
-					runningDaemon=new CronDaemon();
-					runningDaemon.start();
+				if(!found) {
+					cronJobs.add(job);
+					loggers.add(logger);
+					if(runningDaemon==null) {
+						runningDaemon=new CronDaemon();
+						runningDaemon.start();
+					}
 				}
 			}
 		}
@@ -96,14 +98,16 @@ public final class CronDaemon {
 	 */
 	public static void removeCronJob(CronJob job) {
 		synchronized(cronJobs) {
-			for(int i=0, len=cronJobs.size(); i<len; i++) {
-				if(cronJobs.get(i)==job) {
-					cronJobs.remove(i);
-					loggers.remove(i);
-					break;
+			if(job != null) {
+				for(int i=0, len=cronJobs.size(); i<len; i++) {
+					if(cronJobs.get(i)==job) {
+						cronJobs.remove(i);
+						loggers.remove(i);
+						break;
+					}
 				}
 			}
-			if(runningDaemon!=null && cronJobs.isEmpty()) {
+			if(runningDaemon != null && cronJobs.isEmpty()) {
 				runningDaemon.stop();
 				runningDaemon = null;
 			}
