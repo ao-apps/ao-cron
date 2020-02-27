@@ -37,7 +37,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T19:13:47-0500"
-		dateModified="2020-02-27T02:25:07-0600"
+		dateModified="2020-02-27T02:59:54-0600"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-cron:pom.version}" />
@@ -56,9 +56,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 				<ul>
 					<li>Minimum Java version changed from 1.7 to 1.8.</li>
 					<li>Gracefully ignoring calls to add or remove null CronJob.</li>
-					<!-- TODO:
 					<li>Default methods on CronJob interface.</li>
-					-->
 				</ul>
 			</changelog:release>
 		</c:if>
