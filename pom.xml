@@ -40,15 +40,15 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 	</properties>
 
 	<name>AO Cron</name>
-	<url>https://aoindustries.com/${project.artifactId}/</url>
+	<url>https://aoindustries.com/ao-cron/</url>
 	<description>Java cron-like task scheduling library.</description>
 	<inceptionYear>2004</inceptionYear>
 
 	<scm>
 		<!-- Can't inherit due to multi-module -->
-		<connection>scm:git:git://github.com/aoindustries/${project.artifactId}.git</connection>
-		<developerConnection>scm:git:git@github.com:aoindustries/${project.artifactId}.git</developerConnection>
-		<url>https://github.com/aoindustries/${project.artifactId}</url>
+		<connection>scm:git:git://github.com/aoindustries/ao-cron.git</connection>
+		<developerConnection>scm:git:git@github.com:aoindustries/ao-cron.git</developerConnection>
+		<url>https://github.com/aoindustries/ao-cron</url>
 		<tag>HEAD</tag>
 	</scm>
 </project>
