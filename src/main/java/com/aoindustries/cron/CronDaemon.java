@@ -22,6 +22,7 @@
  */
 package com.aoindustries.cron;
 
+import com.aoindustries.concurrent.Executors;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -60,8 +61,10 @@ public final class CronDaemon {
 		CronDaemon.logger = (logger != null) ? logger : Logger.getLogger(CronDaemon.class.getName());
 	}
 
+	private static Executors executors;
+
 	/**
-	 * Once started, this thread will run forever.
+	 * The task for the running daemon.
 	 */
 	private static CronDaemon runningDaemon;
 
@@ -86,6 +89,9 @@ public final class CronDaemon {
 				if(!found) {
 					cronJobs.add(job);
 					loggers.add(logger);
+					if(executors == null) {
+						executors = new Executors();
+					}
 					if(runningDaemon==null) {
 						runningDaemon=new CronDaemon();
 						runningDaemon.start();
@@ -109,14 +115,18 @@ public final class CronDaemon {
 					}
 				}
 			}
-			if(runningDaemon != null && cronJobs.isEmpty()) {
-				runningDaemon.stop();
-				runningDaemon = null;
+			if(cronJobs.isEmpty()) {
+				if(runningDaemon != null) {
+					runningDaemon.stop();
+					runningDaemon = null;
+				}
+				if(executors != null) {
+					executors.dispose();
+					executors = null;
+				}
 			}
 		}
 	}
-
-	private Thread thread;
 
 	private CronDaemon() {
 	}

@@ -75,4 +75,6 @@ public interface CronJob {
 	default int getCronJobThreadPriority() {
 		return Thread.NORM_PRIORITY - 2;
 	}
+
+	// TODO: Executor.Type
 }
