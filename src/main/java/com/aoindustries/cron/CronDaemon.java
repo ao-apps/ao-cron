@@ -53,9 +53,11 @@ public final class CronDaemon {
 
 	/**
 	 * Sets the logger for the cron daemon errors (not the individual cron jobs).
+	 *
+	 * @param logger  The logger or {@code null} to use the default logger
 	 */
 	public static void setLogger(Logger logger) {
-		CronDaemon.logger = logger;
+		CronDaemon.logger = (logger != null) ? logger : Logger.getLogger(CronDaemon.class.getName());
 	}
 
 	/**
