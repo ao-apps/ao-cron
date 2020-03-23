@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2011, 2012, 2013, 2015, 2016, 2019  AO Industries, Inc.
+ * Copyright (C) 2011, 2012, 2013, 2015, 2016, 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -39,40 +39,20 @@ import java.util.StringTokenizer;
  */
 public class MatcherSchedule implements Schedule {
 
-	private static final Schedule YEARLY = new Schedule() {
-		@Override
-		public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
-			return minute==0 && hour==0 && dayOfMonth==1 && month==Calendar.JANUARY;
-		}
-	};
+	private static final Schedule YEARLY = (minute, hour, dayOfMonth, month, dayOfWeek, year) ->
+		minute==0 && hour==0 && dayOfMonth==1 && month==Calendar.JANUARY;
 
-	private static final Schedule MONTHLY = new Schedule() {
-		@Override
-		public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
-			return minute==0 && hour==0 && dayOfMonth==1;
-		}
-	};
+	private static final Schedule MONTHLY = (minute, hour, dayOfMonth, month, dayOfWeek, year) ->
+		minute==0 && hour==0 && dayOfMonth==1;
 
-	private static final Schedule WEEKLY = new Schedule() {
-		@Override
-		public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
-			return minute==0 && hour==0 && dayOfWeek==Calendar.SUNDAY;
-		}
-	};
+	private static final Schedule WEEKLY = (minute, hour, dayOfMonth, month, dayOfWeek, year) ->
+		minute==0 && hour==0 && dayOfWeek==Calendar.SUNDAY;
 
-	private static final Schedule DAILY = new Schedule() {
-		@Override
-		public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
-			return minute==0 && hour==0;
-		}
-	};
+	private static final Schedule DAILY = (minute, hour, dayOfMonth, month, dayOfWeek, year) ->
+		minute==0 && hour==0;
 
-	private static final Schedule HOURLY = new Schedule() {
-		@Override
-		public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
-			return minute==0;
-		}
-	};
+	private static final Schedule HOURLY = (minute, hour, dayOfMonth, month, dayOfWeek, year) ->
+		minute==0;
 
 	/**
 	 * Parses an entire schedule.
