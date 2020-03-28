@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2011, 2013, 2015, 2016, 2019  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016, 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.StringTokenizer;
 
@@ -68,29 +69,29 @@ abstract public class Matcher {
 
 	private static final Map<String,Integer> monthNameMap = new HashMap<>(23 * 4 / 3 + 1);
 	static {
-		monthNameMap.put("Jan", 1);
-		monthNameMap.put("January", 1);
-		monthNameMap.put("Feb", 2);
-		monthNameMap.put("February", 2);
-		monthNameMap.put("Mar", 3);
-		monthNameMap.put("March", 3);
-		monthNameMap.put("Apr", 4);
-		monthNameMap.put("April", 4);
-		monthNameMap.put("May", 5);
-		monthNameMap.put("Jun", 6);
-		monthNameMap.put("June", 6);
-		monthNameMap.put("Jul", 7);
-		monthNameMap.put("July", 7);
-		monthNameMap.put("Aug", 8);
-		monthNameMap.put("August", 8);
-		monthNameMap.put("Sep", 9);
-		monthNameMap.put("September", 9);
-		monthNameMap.put("Oct", 10);
-		monthNameMap.put("October", 10);
-		monthNameMap.put("Nov", 11);
-		monthNameMap.put("November", 11);
-		monthNameMap.put("Dec", 12);
-		monthNameMap.put("December", 12);
+		monthNameMap.put("jan", 1);
+		monthNameMap.put("january", 1);
+		monthNameMap.put("feb", 2);
+		monthNameMap.put("february", 2);
+		monthNameMap.put("mar", 3);
+		monthNameMap.put("march", 3);
+		monthNameMap.put("apr", 4);
+		monthNameMap.put("april", 4);
+		monthNameMap.put("may", 5);
+		monthNameMap.put("jun", 6);
+		monthNameMap.put("june", 6);
+		monthNameMap.put("jul", 7);
+		monthNameMap.put("july", 7);
+		monthNameMap.put("aug", 8);
+		monthNameMap.put("august", 8);
+		monthNameMap.put("sep", 9);
+		monthNameMap.put("september", 9);
+		monthNameMap.put("oct", 10);
+		monthNameMap.put("october", 10);
+		monthNameMap.put("nov", 11);
+		monthNameMap.put("november", 11);
+		monthNameMap.put("dec", 12);
+		monthNameMap.put("december", 12);
 	}
 
 	/**
@@ -103,20 +104,20 @@ abstract public class Matcher {
 
 	private static final Map<String,Integer> dayOfWeekNameMap = new HashMap<>(14 * 4 / 3 + 1);
 	static {
-		dayOfWeekNameMap.put("Sun", 0);
-		dayOfWeekNameMap.put("Sunday", 0);
-		dayOfWeekNameMap.put("Mon", 1);
-		dayOfWeekNameMap.put("Monday", 1);
-		dayOfWeekNameMap.put("Tue", 2);
-		dayOfWeekNameMap.put("Tuesday", 2);
-		dayOfWeekNameMap.put("Wed", 3);
-		dayOfWeekNameMap.put("Wednesday", 3);
-		dayOfWeekNameMap.put("Thu", 4);
-		dayOfWeekNameMap.put("Thursday", 4);
-		dayOfWeekNameMap.put("Fri", 5);
-		dayOfWeekNameMap.put("Friday", 5);
-		dayOfWeekNameMap.put("Sat", 6);
-		dayOfWeekNameMap.put("Saturday", 6);
+		dayOfWeekNameMap.put("sun", 0);
+		dayOfWeekNameMap.put("sunday", 0);
+		dayOfWeekNameMap.put("mon", 1);
+		dayOfWeekNameMap.put("monday", 1);
+		dayOfWeekNameMap.put("tue", 2);
+		dayOfWeekNameMap.put("tuesday", 2);
+		dayOfWeekNameMap.put("wed", 3);
+		dayOfWeekNameMap.put("wednesday", 3);
+		dayOfWeekNameMap.put("thu", 4);
+		dayOfWeekNameMap.put("thursday", 4);
+		dayOfWeekNameMap.put("fri", 5);
+		dayOfWeekNameMap.put("friday", 5);
+		dayOfWeekNameMap.put("sat", 6);
+		dayOfWeekNameMap.put("saturday", 6);
 	}
 
 	/**
@@ -127,14 +128,20 @@ abstract public class Matcher {
 		return parseMatcher(str, 0, 7, 7, dayOfWeekNameMap);
 	}
 
-	// TODO: This is implemented as an iteration for a case-insensitive lookup.
-	//       Maybe this should instead put all items in the map with a lowercase key, then lookup with toLowerCase.
-	//       If the case is required within the map, make a second map that stores all lowercased and use it for lookups.
-	private static int parseInt(String str, Map<String,Integer> nameMap) throws NumberFormatException {
-		for(Map.Entry<String,Integer> entry : nameMap.entrySet()) {
-			if(entry.getKey().equalsIgnoreCase(str)) return entry.getValue();
+	/**
+	 * Confirms all keys are lower-case, for assertions
+	 */
+	private static boolean assertAllKeysLowerCase(Map<String,?> map) {
+		for(String key : map.keySet()) {
+			assert key.equals(key.toLowerCase(Locale.ROOT));
 		}
-		return Integer.parseInt(str);
+		return true;
+	}
+
+	private static int parseInt(String str, Map<String,Integer> nameMap) throws NumberFormatException {
+		assert assertAllKeysLowerCase(nameMap);
+		Integer namedValue = nameMap.get(str.toLowerCase(Locale.ROOT));
+		return (namedValue != null) ? namedValue : Integer.parseInt(str);
 	}
 
 	/**
