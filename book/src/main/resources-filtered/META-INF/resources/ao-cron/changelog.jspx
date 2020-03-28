@@ -37,7 +37,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T19:13:47-0500"
-		dateModified="2020-03-28T00:42:01-05:00"
+		dateModified="2020-03-28T01:04:48-05:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-cron:pom.version}" />
@@ -52,25 +52,34 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 				groupId="@{project.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{project.scm.url}"
-			>
-				<ul>
-					<li>Minimum Java version changed from 1.7 to 1.8.</li>
-					<li>
-						Reduced use of property substitutions in <code>pom.xml</code>.
-						This is to help 3rd-party parsers that fail to perform full Maven-compatible substitutions.
-					</li>
-					<li>Gracefully ignoring calls to add or remove null CronJob.</li>
-					<li>Default methods on CronJob interface.</li>
-					<li>Default CronJob thread priority changed to <ao:a rel="nofollow" href="@{javadoc.link.javase}java/lang/Thread.html#NORM_PRIORITY">Thread.NORM_PRIORITY</ao:a>.</li>
-					<li>
-						Now using executors instead of threads, including cron jobs being able to select
-						their executor class (per-processor, sequential, unbounded).
-					</li>
-					<li>Moved <code>CronJobScheduleMode</code> to <code>CronJob.ScheduleMode</code>.</li>
-					<li>Simplified method names in <code>CronJob</code> and <code>Schedule</code>.</li>
-				</ul>
-			</changelog:release>
+			/>
 		</c:if>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="2.0.0"
+			datePublished="2020-03-28T01:04:48-05:00"
+			groupId="@{project.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{project.scm.url}"
+		>
+			<ul>
+				<li>Minimum Java version changed from 1.7 to 1.8.</li>
+				<li>
+					Reduced use of property substitutions in <code>pom.xml</code>.
+					This is to help 3rd-party parsers that fail to perform full Maven-compatible substitutions.
+				</li>
+				<li>Gracefully ignoring calls to add or remove null CronJob.</li>
+				<li>Default methods on CronJob interface.</li>
+				<li>Default CronJob thread priority changed to <ao:a rel="nofollow" href="@{javadoc.link.javase}java/lang/Thread.html#NORM_PRIORITY">Thread.NORM_PRIORITY</ao:a>.</li>
+				<li>
+					Now using executors instead of threads, including cron jobs being able to select
+					their executor class (per-processor, sequential, unbounded).
+				</li>
+				<li>Moved <code>CronJobScheduleMode</code> to <code>CronJob.ScheduleMode</code>.</li>
+				<li>Simplified method names in <code>CronJob</code> and <code>Schedule</code>.</li>
+			</ul>
+		</changelog:release>
 
 		<changelog:release
 			projectName="@{documented.name}"
