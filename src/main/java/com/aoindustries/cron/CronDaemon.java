@@ -343,7 +343,6 @@ public final class CronDaemon {
 				runningJobTasks.add(jobTask);
 				Executor executor = job.getExecutor().getExecutor(executors);
 				Future<?> jobFuture = executor.submit(jobTask);
-				// TODO: Remove this once ao-concurrent updated to run the job on submit instead of get
 				if(executor == executors.getSequential()) {
 					// Get call required to run the task
 					jobFuture.get();
