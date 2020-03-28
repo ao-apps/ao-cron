@@ -22,12 +22,24 @@
  */
 package com.aoindustries.cron;
 
+import com.aoindustries.concurrent.Executors;
+
 /**
  * One task that is performed on a routine basis.
  *
  * @author  AO Industries, Inc.
  */
 public interface CronJob {
+
+	/**
+	 * Gets the name for this cron job.
+	 * <p>
+	 * Defaults to <code>{@linkplain Object#getClass() getClass()}.{@link Class#getName() getName()}</code>.
+	 * </p>
+	 */
+	default String getCronJobName() {
+		return getClass().getName();
+	}
 
 	/**
 	 * Gets the schedule for this cron job.
@@ -48,21 +60,57 @@ public interface CronJob {
 	}
 
 	/**
-	 * Gets the name for this cron job.
-	 * <p>
-	 * Defaults to <code>{@linkplain Object#getClass() getClass()}.{@link Class#getName() getName()}</code>.
-	 * </p>
+	 * The various executors that may be selected to run this job.
 	 */
-	default String getCronJobName() {
-		return getClass().getName();
+	enum Executor {
+
+		/**
+		 * @see  Executors#getPerProcessor()
+		 */
+		PER_PROCESSOR {
+			@Override
+			com.aoindustries.concurrent.Executor getExecutor(Executors executors) {
+				return executors.getPerProcessor();
+			}
+		},
+
+		/**
+		 * This job will be executed on the main cron daemon thread.  This is
+		 * only appropriate for the fastest and most simple of jobs, as any job
+		 * not returning quickly will stall the execution of other jobs or lock
+		 * the daemon entirely.
+		 *
+		 * @see  Executors#getSequential()
+		 */
+		SEQUENTIAL {
+			@Override
+			com.aoindustries.concurrent.Executor getExecutor(Executors executors) {
+				return executors.getSequential();
+			}
+		},
+
+		/**
+		 * @see  Executors#getUnbounded()
+		 */
+		UNBOUNDED {
+			@Override
+			com.aoindustries.concurrent.Executor getExecutor(Executors executors) {
+				return executors.getUnbounded();
+			}
+		};
+
+		abstract com.aoindustries.concurrent.Executor getExecutor(Executors executors);
 	}
 
 	/**
-	 * Performs the scheduled task.
-	 *
-	 * @see Schedule#isCronJobScheduled(int, int, int, int, int, int)
+	 * Gets the executor that should be used for this job.
+	 * <p>
+	 * Defaults to {@link Executor#UNBOUNDED}.
+	 * </p>
 	 */
-	void runCronJob(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year);
+	default Executor getExecutor() {
+		return Executor.UNBOUNDED;
+	}
 
 	/**
 	 * Gets the Thread priority for this job.
@@ -75,4 +123,11 @@ public interface CronJob {
 	default int getCronJobThreadPriority() {
 		return Thread.NORM_PRIORITY;
 	}
+
+	/**
+	 * Performs the scheduled task.
+	 *
+	 * @see Schedule#isCronJobScheduled(int, int, int, int, int, int)
+	 */
+	void runCronJob(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year);
 }
