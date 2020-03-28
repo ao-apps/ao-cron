@@ -67,12 +67,12 @@ public interface CronJob {
 	/**
 	 * Gets the Thread priority for this job.
 	 * <p>
-	 * Defaults to <code>{@linkplain Thread#NORM_PRIORITY} - 2</code>.
+	 * Defaults to {@link Thread#NORM_PRIORITY}.
 	 * </p>
 	 *
 	 * @see  Thread#setPriority
 	 */
 	default int getCronJobThreadPriority() {
-		return Thread.NORM_PRIORITY - 2;
+		return Thread.NORM_PRIORITY;
 	}
 }
