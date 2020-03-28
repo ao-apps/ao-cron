@@ -139,7 +139,7 @@ public class MatcherSchedule implements Schedule {
 	}
 
 	@Override
-	public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
+	public boolean isScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
 		return
 			this.minute.matches(minute)
 			&& this.hour.matches(hour)

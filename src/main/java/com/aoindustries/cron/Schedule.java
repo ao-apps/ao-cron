@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2011, 2015, 2016, 2019  AO Industries, Inc.
+ * Copyright (C) 2011, 2015, 2016, 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -41,5 +41,5 @@ public interface Schedule {
 	 * @param month 0-11
 	 * @param dayOfWeek 1-7, {@link Calendar#SUNDAY} through {@link Calendar#SATURDAY}
 	 */
-	boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year);
+	boolean isScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year);
 }

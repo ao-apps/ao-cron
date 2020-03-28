@@ -37,7 +37,7 @@ public interface CronJob {
 	 * Defaults to <code>{@linkplain Object#getClass() getClass()}.{@link Class#getName() getName()}</code>.
 	 * </p>
 	 */
-	default String getCronJobName() {
+	default String getName() {
 		return getClass().getName();
 	}
 
@@ -45,18 +45,34 @@ public interface CronJob {
 	 * Gets the schedule for this cron job.
 	 * This is called once per minute for each job.
 	 */
-	Schedule getCronJobSchedule();
+	Schedule getSchedule();
+
+	/**
+	 * The set of possible concurrency settings for cron jobs.
+	 */
+	enum ScheduleMode {
+
+		/**
+		 * Indicates the jobs should be ran concurrently when running together.
+		 */
+		CONCURRENT,
+
+		/**
+		 * Indicates the new job should be skipped to avoid running the same job concurrently.
+		 */
+		SKIP
+	}
 
 	/**
 	 * Gets the job scheduling mode.
 	 * <p>
-	 * Defaults to {@link CronJobScheduleMode#SKIP}.
+	 * Defaults to {@link ScheduleMode#SKIP}.
 	 * </p>
 	 *
-	 * @see  CronJobScheduleMode
+	 * @see  ScheduleMode
 	 */
-	default CronJobScheduleMode getCronJobScheduleMode() {
-		return CronJobScheduleMode.SKIP;
+	default ScheduleMode getScheduleMode() {
+		return ScheduleMode.SKIP;
 	}
 
 	/**
@@ -120,14 +136,14 @@ public interface CronJob {
 	 *
 	 * @see  Thread#setPriority
 	 */
-	default int getCronJobThreadPriority() {
+	default int getThreadPriority() {
 		return Thread.NORM_PRIORITY;
 	}
 
 	/**
 	 * Performs the scheduled task.
 	 *
-	 * @see Schedule#isCronJobScheduled(int, int, int, int, int, int)
+	 * @see Schedule#isScheduled(int, int, int, int, int, int)
 	 */
-	void runCronJob(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year);
+	void run(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year);
 }

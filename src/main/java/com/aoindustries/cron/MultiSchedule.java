@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2011, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2011, 2015, 2016, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -49,9 +49,9 @@ public class MultiSchedule implements Schedule {
 	}
 
 	@Override
-	public boolean isCronJobScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
+	public boolean isScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
 		for(Schedule schedule : schedules) {
-			if(schedule.isCronJobScheduled(minute, hour, dayOfMonth, month, dayOfWeek, year)) return true;
+			if(schedule.isScheduled(minute, hour, dayOfMonth, month, dayOfWeek, year)) return true;
 		}
 		return false;
 	}

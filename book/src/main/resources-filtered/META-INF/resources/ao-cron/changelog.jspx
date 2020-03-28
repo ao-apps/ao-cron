@@ -37,7 +37,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T19:13:47-0500"
-		dateModified="2020-03-27T22:19:23-05:00"
+		dateModified="2020-03-28T00:42:01-05:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-cron:pom.version}" />
@@ -66,6 +66,8 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 						Now using executors instead of threads, including cron jobs being able to select
 						their executor class (per-processor, sequential, unbounded).
 					</li>
+					<li>Moved <code>CronJobScheduleMode</code> to <code>CronJob.ScheduleMode</code>.</li>
+					<li>Simplified method names in <code>CronJob</code> and <code>Schedule</code>.</li>
 				</ul>
 			</changelog:release>
 		</c:if>

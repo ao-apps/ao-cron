@@ -112,14 +112,14 @@ public final class CronDaemon {
 								CronJob job = cronJobs.get(i);
 								Logger jobLogger = loggers.get(i);
 								try {
-									if(job.getCronJobSchedule().isCronJobScheduled(minute, hour, dayOfMonth, month, dayOfWeek, year)) {
+									if(job.getSchedule().isScheduled(minute, hour, dayOfMonth, month, dayOfWeek, year)) {
 										runJob(job, jobLogger, minute, hour, dayOfMonth, month, dayOfWeek, year);
 									}
 								} catch(ThreadDeath TD) {
 									throw TD;
 								} catch(Throwable T) {
 									if(jobLogger.isLoggable(Level.SEVERE)) {
-										jobLogger.log(Level.SEVERE, "cron_job.name=" + job.getCronJobName(), T);
+										jobLogger.log(Level.SEVERE, "cron_job.name=" + job.getName(), T);
 									}
 								}
 							}
@@ -184,26 +184,26 @@ public final class CronDaemon {
 			try {
 				Thread thread = Thread.currentThread();
 				final int oldPriority = thread.getPriority();
-				int priority = job.getCronJobThreadPriority();
+				int priority = job.getThreadPriority();
 				try {
 					if(oldPriority != priority) {
 						try {
 							thread.setPriority(priority);
 						} catch(SecurityException e) {
 							if(logger.isLoggable(Level.WARNING)) {
-								logger.log(Level.WARNING, "cron_job.name=" + job.getCronJobName(), e);
+								logger.log(Level.WARNING, "cron_job.name=" + job.getName(), e);
 							}
 							priority = oldPriority;
 						}
 					}
-					job.runCronJob(minute, hour, dayOfMonth, month, dayOfWeek, year);
+					job.run(minute, hour, dayOfMonth, month, dayOfWeek, year);
 				} finally {
 					if(oldPriority != priority) {
 						try {
 							thread.setPriority(oldPriority);
 						} catch(SecurityException e) {
 							if(logger.isLoggable(Level.WARNING)) {
-								logger.log(Level.WARNING, "cron_job.name=" + job.getCronJobName(), e);
+								logger.log(Level.WARNING, "cron_job.name=" + job.getName(), e);
 							}
 						}
 					}
@@ -212,7 +212,7 @@ public final class CronDaemon {
 				throw TD;
 			} catch(Throwable T) {
 				if(logger.isLoggable(Level.SEVERE)) {
-					logger.log(Level.SEVERE, "cron_job.name=" + job.getCronJobName(), T);
+					logger.log(Level.SEVERE, "cron_job.name=" + job.getName(), T);
 				}
 			} finally {
 				jobDone(this);
@@ -312,7 +312,7 @@ public final class CronDaemon {
 		}
 		Logger l = logger;
 		if(l.isLoggable(Level.WARNING)) {
-			l.log(Level.WARNING, "cron_job.name=" + task.job.getCronJobName(), new Throwable("Warning: task not found"));
+			l.log(Level.WARNING, "cron_job.name=" + task.job.getName(), new Throwable("Warning: task not found"));
 		}
 	}
 
@@ -322,9 +322,9 @@ public final class CronDaemon {
 	private static void runJob(CronJob job, Logger logger, int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
 		assert Thread.holdsLock(lock);
 		try {
-			CronJobScheduleMode scheduleMode = job.getCronJobScheduleMode();
+			CronJob.ScheduleMode scheduleMode = job.getScheduleMode();
 			boolean run;
-			if(scheduleMode == CronJobScheduleMode.SKIP) {
+			if(scheduleMode == CronJob.ScheduleMode.SKIP) {
 				// Skip if already running
 				run = true;
 				for(CronJobTask jobTask : runningJobTasks) {
@@ -333,10 +333,10 @@ public final class CronDaemon {
 						break;
 					}
 				}
-			} else if(scheduleMode == CronJobScheduleMode.CONCURRENT) {
+			} else if(scheduleMode == CronJob.ScheduleMode.CONCURRENT) {
 				run = true;
 			} else {
-				throw new RuntimeException("Unknown value from CronJob.getCronJobScheduleMode: " + scheduleMode);
+				throw new RuntimeException("Unknown value from CronJob.getScheduleMode: " + scheduleMode);
 			}
 			if(run) {
 				CronJobTask jobTask = new CronJobTask(job, logger, minute, hour, dayOfMonth, month, dayOfWeek, year);
@@ -352,7 +352,7 @@ public final class CronDaemon {
 			throw TD;
 		} catch(Throwable T) {
 			if(logger.isLoggable(Level.SEVERE)) {
-				logger.log(Level.SEVERE, "cron_job.name="+job.getCronJobName(), T);
+				logger.log(Level.SEVERE, "cron_job.name=" + job.getName(), T);
 			}
 		}
 	}
