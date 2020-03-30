@@ -38,7 +38,6 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 	<inceptionYear>2004</inceptionYear>
 
 	<scm>
-		<!-- Can't inherit due to multi-module -->
 		<connection>scm:git:git://github.com/aoindustries/ao-cron.git</connection>
 		<developerConnection>scm:git:git@github.com:aoindustries/ao-cron.git</developerConnection>
 		<url>https://github.com/aoindustries/ao-cron</url>
