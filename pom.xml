@@ -55,13 +55,40 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 			<build>
 				<plugins>
 					<plugin>
+						<groupId>org.apache.maven.plugins</groupId><artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>unpack.offlinkLinks</id>
+								<phase>generate-sources</phase>
+								<goals><goal>unpack</goal></goals>
+								<configuration>
+									<artifactItems>
+										<!-- Direct -->
+										<artifactItem>
+											<groupId>com.aoindustries</groupId><artifactId>ao-concurrent</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.aoindustries/ao-concurrent</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
 						<groupId>org.apache.maven.plugins</groupId><artifactId>maven-javadoc-plugin</artifactId>
 						<configuration>
 							<links>
 								<link>${javadoc.link.javase}</link>
 								<!-- Direct -->
-								<link>https://aoindustries.com/ao-concurrent/apidocs/</link>
+								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-concurrent</artifactId> -->
 							</links>
+							<offlineLinks>
+								<!-- Direct -->
+								<offlineLink>
+									<url>https://aoindustries.com/ao-concurrent/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.aoindustries/ao-concurrent</location>
+								</offlineLink>
+							</offlineLinks>
 						</configuration>
 					</plugin>
 				</plugins>
