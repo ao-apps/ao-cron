@@ -105,7 +105,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 				<groupId>com.aoindustries</groupId><artifactId>ao-collections</artifactId><version>1.1.0${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.aoindustries</groupId><artifactId>ao-lang</artifactId><version>4.5.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+				<groupId>com.aoindustries</groupId><artifactId>ao-lang</artifactId><version>4.5.0${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.aoindustries</groupId><artifactId>ao-tempfiles</artifactId><version>1.0.2${POST-SNAPSHOT}</version>
