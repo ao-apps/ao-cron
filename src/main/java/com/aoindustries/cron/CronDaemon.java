@@ -54,6 +54,7 @@ public final class CronDaemon {
 	/**
 	 * The cron daemon errors will be reported here (not the individual cron jobs).
 	 */
+	@SuppressWarnings("NonConstantLogger")
 	private static volatile Logger logger = Logger.getLogger(CronDaemon.class.getName());
 
 	/**
@@ -77,6 +78,7 @@ public final class CronDaemon {
 		private int lastYear = Integer.MIN_VALUE;
 
 		@Override
+		@SuppressWarnings("TooBroadCatch")
 		public void run() {
 			long sleepTime = 0;
 			try {
@@ -319,6 +321,7 @@ public final class CronDaemon {
 	/**
 	 * Shared implementation of running a job, whether scheduled or immediate.
 	 */
+	@SuppressWarnings({"TooBroadCatch", "UseSpecificCatch"})
 	private static void runJob(CronJob job, Logger logger, int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
 		assert Thread.holdsLock(lock);
 		try {

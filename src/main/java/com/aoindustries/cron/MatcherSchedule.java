@@ -62,7 +62,9 @@ public class MatcherSchedule implements Schedule {
 		if(str.indexOf(';')!=-1) {
 			Collection<Schedule> schedules = new ArrayList<>();
 			StringTokenizer st = new StringTokenizer(";");
-			while(st.hasMoreTokens()) schedules.add(parseSchedule(st.nextToken()));
+			while(st.hasMoreTokens()) {
+				schedules.add(parseSchedule(st.nextToken()));
+			}
 			return new MultiSchedule(schedules);
 		}
 		// Special strings

@@ -152,7 +152,9 @@ abstract public class Matcher {
 		if(str.indexOf(',')!=-1) {
 			Collection<Matcher> list = new ArrayList<>();
 			StringTokenizer st = new StringTokenizer(str, ",");
-			while(st.hasMoreTokens()) list.add(parseMatcher(st.nextToken(), minimum, maximum, modulus, nameMap));
+			while(st.hasMoreTokens()) {
+				list.add(parseMatcher(st.nextToken(), minimum, maximum, modulus, nameMap));
+			}
 			return new List(list);
 		}
 
