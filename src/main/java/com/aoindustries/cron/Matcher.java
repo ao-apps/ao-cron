@@ -22,10 +22,10 @@
  */
 package com.aoindustries.cron;
 
+import com.aoindustries.collections.AoCollections;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -67,7 +67,7 @@ abstract public class Matcher {
 		return parseMatcher(str, 1, 31, 32, nameMap);
 	}
 
-	private static final Map<String,Integer> monthNameMap = new HashMap<>(23 * 4 / 3 + 1);
+	private static final Map<String,Integer> monthNameMap = AoCollections.newHashMap(23);
 	static {
 		monthNameMap.put("jan", 1);
 		monthNameMap.put("january", 1);
@@ -102,7 +102,7 @@ abstract public class Matcher {
 		return parseMatcher(str, 1, 12, 13, monthNameMap);
 	}
 
-	private static final Map<String,Integer> dayOfWeekNameMap = new HashMap<>(14 * 4 / 3 + 1);
+	private static final Map<String,Integer> dayOfWeekNameMap = AoCollections.newHashMap(14);
 	static {
 		dayOfWeekNameMap.put("sun", 0);
 		dayOfWeekNameMap.put("sunday", 0);
