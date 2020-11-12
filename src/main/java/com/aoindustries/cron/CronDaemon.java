@@ -223,7 +223,7 @@ public final class CronDaemon {
 	};
 
 	/**
-	 * The executors, disposed when the last job is removed.
+	 * The executors, closed when the last job is removed.
 	 */
 	private static Executors executors;
 
@@ -292,7 +292,7 @@ public final class CronDaemon {
 					future = null;
 				}
 				if(executors != null) {
-					executors.dispose();
+					executors.close();
 					executors = null;
 				}
 			}
