@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2011, 2013, 2015, 2016, 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016, 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -47,7 +47,7 @@ abstract public class Matcher {
 	 * Parses a minute matcher.
 	 */
 	public static Matcher parseMinute(String str) throws IllegalArgumentException {
-		Map<String,Integer> nameMap = Collections.emptyMap();
+		Map<String, Integer> nameMap = Collections.emptyMap();
 		return parseMatcher(str, 0, 59, 60, nameMap);
 	}
 
@@ -55,7 +55,7 @@ abstract public class Matcher {
 	 * Parses a hour matcher.
 	 */
 	public static Matcher parseHour(String str) throws IllegalArgumentException {
-		Map<String,Integer> nameMap = Collections.emptyMap();
+		Map<String, Integer> nameMap = Collections.emptyMap();
 		return parseMatcher(str, 0, 23, 24, nameMap);
 	}
 
@@ -63,11 +63,11 @@ abstract public class Matcher {
 	 * Parses a dayOfMonth matcher.
 	 */
 	public static Matcher parseDayOfMonth(String str) throws IllegalArgumentException {
-		Map<String,Integer> nameMap = Collections.emptyMap();
+		Map<String, Integer> nameMap = Collections.emptyMap();
 		return parseMatcher(str, 1, 31, 32, nameMap);
 	}
 
-	private static final Map<String,Integer> monthNameMap = AoCollections.newHashMap(23);
+	private static final Map<String, Integer> monthNameMap = AoCollections.newHashMap(23);
 	static {
 		monthNameMap.put("jan", 1);
 		monthNameMap.put("january", 1);
@@ -102,7 +102,7 @@ abstract public class Matcher {
 		return parseMatcher(str, 1, 12, 13, monthNameMap);
 	}
 
-	private static final Map<String,Integer> dayOfWeekNameMap = AoCollections.newHashMap(14);
+	private static final Map<String, Integer> dayOfWeekNameMap = AoCollections.newHashMap(14);
 	static {
 		dayOfWeekNameMap.put("sun", 0);
 		dayOfWeekNameMap.put("sunday", 0);
@@ -131,14 +131,14 @@ abstract public class Matcher {
 	/**
 	 * Confirms all keys are lower-case, for assertions
 	 */
-	private static boolean assertAllKeysLowerCase(Map<String,?> map) {
+	private static boolean assertAllKeysLowerCase(Map<String, ?> map) {
 		for(String key : map.keySet()) {
 			assert key.equals(key.toLowerCase(Locale.ROOT));
 		}
 		return true;
 	}
 
-	private static int parseInt(String str, Map<String,Integer> nameMap) throws NumberFormatException {
+	private static int parseInt(String str, Map<String, Integer> nameMap) throws NumberFormatException {
 		assert assertAllKeysLowerCase(nameMap);
 		Integer namedValue = nameMap.get(str.toLowerCase(Locale.ROOT));
 		return (namedValue != null) ? namedValue : Integer.parseInt(str);
@@ -147,7 +147,7 @@ abstract public class Matcher {
 	/**
 	 * Parses a cron value, supporting lists, asterisk, and ranges, and steps.
 	 */
-	public static Matcher parseMatcher(String str, int minimum, int maximum, int modulus, Map<String,Integer> nameMap) throws IllegalArgumentException {
+	public static Matcher parseMatcher(String str, int minimum, int maximum, int modulus, Map<String, Integer> nameMap) throws IllegalArgumentException {
 		// Handle list
 		if(str.indexOf(',')!=-1) {
 			Collection<Matcher> list = new ArrayList<>();
