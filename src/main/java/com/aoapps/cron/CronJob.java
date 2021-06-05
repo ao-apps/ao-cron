@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2015, 2016, 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2015, 2016, 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -20,9 +20,9 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with ao-cron.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aoindustries.cron;
+package com.aoapps.cron;
 
-import com.aoindustries.concurrent.Executors;
+import com.aoapps.concurrent.Executors;
 
 /**
  * One task that is performed on a routine basis.
@@ -85,7 +85,7 @@ public interface CronJob {
 		 */
 		PER_PROCESSOR {
 			@Override
-			com.aoindustries.concurrent.Executor getExecutor(Executors executors) {
+			com.aoapps.concurrent.Executor getExecutor(Executors executors) {
 				return executors.getPerProcessor();
 			}
 		},
@@ -100,7 +100,7 @@ public interface CronJob {
 		 */
 		SEQUENTIAL {
 			@Override
-			com.aoindustries.concurrent.Executor getExecutor(Executors executors) {
+			com.aoapps.concurrent.Executor getExecutor(Executors executors) {
 				return executors.getSequential();
 			}
 		},
@@ -110,12 +110,12 @@ public interface CronJob {
 		 */
 		UNBOUNDED {
 			@Override
-			com.aoindustries.concurrent.Executor getExecutor(Executors executors) {
+			com.aoapps.concurrent.Executor getExecutor(Executors executors) {
 				return executors.getUnbounded();
 			}
 		};
 
-		abstract com.aoindustries.concurrent.Executor getExecutor(Executors executors);
+		abstract com.aoapps.concurrent.Executor getExecutor(Executors executors);
 	}
 
 	/**

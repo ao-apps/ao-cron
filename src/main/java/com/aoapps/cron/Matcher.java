@@ -20,9 +20,9 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with ao-cron.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aoindustries.cron;
+package com.aoapps.cron;
 
-import com.aoindustries.collections.AoCollections;
+import com.aoapps.collections.AoCollections;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
