@@ -54,7 +54,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 			projectName="@{documented.name}"
 			version="3.0.0"
 			datePublished="2021-07-19T21:40:12-05:00"
-			groupId="com.aoindustries"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
 		>
