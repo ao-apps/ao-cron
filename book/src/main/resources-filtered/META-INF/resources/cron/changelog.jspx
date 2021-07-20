@@ -37,7 +37,7 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T19:13:47-05:00"
-		dateModified="2021-06-27T16:13:41-05:00"
+		dateModified="2021-07-19T21:40:12-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -47,14 +47,23 @@ along with ao-cron.  If not, see <http://www.gnu.org/licenses />.
 				artifactId="@{documented.artifactId}"
 				repository="@{nexusUrl}content/repositories/snapshots/"
 				scmUrl="@{project.scm.url}"
-			>
-				<ul>
-					<li>Now supports Java 9+ modules with included <code>module-info.class</code>.</li>
-					<li>Maven artifact relocated from <code>com.aoindustries:ao-cron</code> to <code>com.aoapps:ao-cron</code>.</li>
-					<li>Package renamed from <code>com.aoindustries.cron</code> to <code>com.aoapps.cron</code>.</li>
-				</ul>
-			</changelog:release>
+			/>
 		</c:if>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="3.0.0"
+			datePublished="2021-07-19T21:40:12-05:00"
+			groupId="com.aoindustries"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{project.scm.url}"
+		>
+			<ul>
+				<li>Now supports Java 9+ modules with included <code>module-info.class</code>.</li>
+				<li>Maven artifact relocated from <code>com.aoindustries:ao-cron</code> to <code>com.aoapps:ao-cron</code>.</li>
+				<li>Package renamed from <code>com.aoindustries.cron</code> to <code>com.aoapps.cron</code>.</li>
+			</ul>
+		</changelog:release>
 
 		<changelog:release
 			projectName="@{documented.name}"
