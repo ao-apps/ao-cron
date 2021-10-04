@@ -37,11 +37,11 @@ import java.util.StringTokenizer;
  *
  * @author  AO Industries, Inc.
  */
-abstract public class Matcher {
+public abstract class Matcher {
 
 	abstract int getStepOffset();
 
-	abstract public boolean matches(int value);
+	public abstract boolean matches(int value);
 
 	/**
 	 * Parses a minute matcher.
