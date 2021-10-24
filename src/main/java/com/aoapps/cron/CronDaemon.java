@@ -117,11 +117,11 @@ public final class CronDaemon {
 									if(job.getSchedule().isScheduled(minute, hour, dayOfMonth, month, dayOfWeek, year)) {
 										runJob(job, jobLogger, minute, hour, dayOfMonth, month, dayOfWeek, year);
 									}
-								} catch(ThreadDeath TD) {
-									throw TD;
-								} catch(Throwable T) {
+								} catch(ThreadDeath td) {
+									throw td;
+								} catch(Throwable t) {
 									if(jobLogger.isLoggable(Level.SEVERE)) {
-										jobLogger.log(Level.SEVERE, "cron_job.name=" + job.getName(), T);
+										jobLogger.log(Level.SEVERE, "cron_job.name=" + job.getName(), t);
 									}
 								}
 							}
@@ -142,10 +142,10 @@ public final class CronDaemon {
 						if(sleepTime > MAX_SLEEP_TIME) sleepTime = MAX_SLEEP_TIME;
 					}
 				}
-			} catch(ThreadDeath TD) {
-				throw TD;
-			} catch(Throwable T) {
-				logger.log(Level.SEVERE, null, T);
+			} catch(ThreadDeath td) {
+				throw td;
+			} catch(Throwable t) {
+				logger.log(Level.SEVERE, null, t);
 				sleepTime = MAX_SLEEP_TIME / 2;
 			} finally {
 				assert sleepTime > 0;
@@ -169,7 +169,7 @@ public final class CronDaemon {
 		private final int month;
 		private final int dayOfWeek;
 		private final int year;
-		
+
 		private CronJobTask(CronJob job, Logger logger, int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
 			this.job        = job;
 			this.logger     = logger;
@@ -210,11 +210,11 @@ public final class CronDaemon {
 						}
 					}
 				}
-			} catch(ThreadDeath TD) {
-				throw TD;
-			} catch(Throwable T) {
+			} catch(ThreadDeath td) {
+				throw td;
+			} catch(Throwable t) {
 				if(logger.isLoggable(Level.SEVERE)) {
-					logger.log(Level.SEVERE, "cron_job.name=" + job.getName(), T);
+					logger.log(Level.SEVERE, "cron_job.name=" + job.getName(), t);
 				}
 			} finally {
 				jobDone(this);
@@ -351,11 +351,11 @@ public final class CronDaemon {
 					jobFuture.get();
 				}
 			}
-		} catch(ThreadDeath TD) {
-			throw TD;
-		} catch(Throwable T) {
+		} catch(ThreadDeath td) {
+			throw td;
+		} catch(Throwable t) {
 			if(logger.isLoggable(Level.SEVERE)) {
-				logger.log(Level.SEVERE, "cron_job.name=" + job.getName(), T);
+				logger.log(Level.SEVERE, "cron_job.name=" + job.getName(), t);
 			}
 		}
 	}
