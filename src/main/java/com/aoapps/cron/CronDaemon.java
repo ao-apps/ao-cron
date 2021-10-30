@@ -353,6 +353,12 @@ public final class CronDaemon {
 			}
 		} catch(ThreadDeath td) {
 			throw td;
+		} catch(InterruptedException e) {
+			if(logger.isLoggable(Level.WARNING)) {
+				logger.log(Level.WARNING, "cron_job.name=" + job.getName(), e);
+			}
+			// Restore the interrupted status
+			Thread.currentThread().interrupt();
 		} catch(Throwable t) {
 			if(logger.isLoggable(Level.SEVERE)) {
 				logger.log(Level.SEVERE, "cron_job.name=" + job.getName(), t);
