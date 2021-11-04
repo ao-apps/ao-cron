@@ -157,7 +157,7 @@ public final class CronDaemon {
 				}
 			}
 		}
-	};
+	}
 
 	private static class CronJobTask implements Runnable {
 
@@ -220,7 +220,7 @@ public final class CronDaemon {
 				jobDone(this);
 			}
 		}
-	};
+	}
 
 	/**
 	 * The executors, closed when the last job is removed.
