@@ -47,7 +47,10 @@ import java.util.logging.Logger;
  *
  * @author  AO Industries, Inc.
  */
-public final class CronDaemon {
+public abstract class CronDaemon {
+
+	/** Make no instances. */
+	private CronDaemon() {throw new AssertionError();}
 
 	private static final long MAX_SLEEP_TIME = 60L * 1000;
 
@@ -297,9 +300,6 @@ public final class CronDaemon {
 				}
 			}
 		}
-	}
-
-	private CronDaemon() {
 	}
 
 	private static void jobDone(CronJobTask task) {
