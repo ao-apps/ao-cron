@@ -32,119 +32,119 @@ import com.aoapps.concurrent.Executors;
  */
 public interface CronJob {
 
-	/**
-	 * Gets the name for this cron job.
-	 * <p>
-	 * Defaults to <code>{@linkplain Object#getClass() getClass()}.{@link Class#getName() getName()}</code>.
-	 * </p>
-	 */
-	default String getName() {
-		return getClass().getName();
-	}
+  /**
+   * Gets the name for this cron job.
+   * <p>
+   * Defaults to <code>{@linkplain Object#getClass() getClass()}.{@link Class#getName() getName()}</code>.
+   * </p>
+   */
+  default String getName() {
+    return getClass().getName();
+  }
 
-	/**
-	 * Gets the schedule for this cron job.
-	 * This is called once per minute for each job.
-	 */
-	Schedule getSchedule();
+  /**
+   * Gets the schedule for this cron job.
+   * This is called once per minute for each job.
+   */
+  Schedule getSchedule();
 
-	/**
-	 * The set of possible concurrency settings for cron jobs.
-	 */
-	enum ScheduleMode {
+  /**
+   * The set of possible concurrency settings for cron jobs.
+   */
+  enum ScheduleMode {
 
-		/**
-		 * Indicates the jobs should be ran concurrently when running together.
-		 */
-		CONCURRENT,
+    /**
+     * Indicates the jobs should be ran concurrently when running together.
+     */
+    CONCURRENT,
 
-		/**
-		 * Indicates the new job should be skipped to avoid running the same job concurrently.
-		 */
-		SKIP
-	}
+    /**
+     * Indicates the new job should be skipped to avoid running the same job concurrently.
+     */
+    SKIP
+  }
 
-	/**
-	 * Gets the job scheduling mode.
-	 * <p>
-	 * Defaults to {@link ScheduleMode#SKIP}.
-	 * </p>
-	 *
-	 * @see  ScheduleMode
-	 */
-	default ScheduleMode getScheduleMode() {
-		return ScheduleMode.SKIP;
-	}
+  /**
+   * Gets the job scheduling mode.
+   * <p>
+   * Defaults to {@link ScheduleMode#SKIP}.
+   * </p>
+   *
+   * @see  ScheduleMode
+   */
+  default ScheduleMode getScheduleMode() {
+    return ScheduleMode.SKIP;
+  }
 
-	/**
-	 * The various executors that may be selected to run this job.
-	 */
-	enum Executor {
+  /**
+   * The various executors that may be selected to run this job.
+   */
+  enum Executor {
 
-		/**
-		 * @see  Executors#getPerProcessor()
-		 */
-		PER_PROCESSOR {
-			@Override
-			com.aoapps.concurrent.Executor getExecutor(Executors executors) {
-				return executors.getPerProcessor();
-			}
-		},
+    /**
+     * @see  Executors#getPerProcessor()
+     */
+    PER_PROCESSOR {
+      @Override
+      com.aoapps.concurrent.Executor getExecutor(Executors executors) {
+        return executors.getPerProcessor();
+      }
+    },
 
-		/**
-		 * This job will be executed on the main cron daemon thread.  This is
-		 * only appropriate for the fastest and most simple of jobs, as any job
-		 * not returning quickly will stall the execution of other jobs or lock
-		 * the daemon entirely.
-		 *
-		 * @see  Executors#getSequential()
-		 */
-		SEQUENTIAL {
-			@Override
-			com.aoapps.concurrent.Executor getExecutor(Executors executors) {
-				return executors.getSequential();
-			}
-		},
+    /**
+     * This job will be executed on the main cron daemon thread.  This is
+     * only appropriate for the fastest and most simple of jobs, as any job
+     * not returning quickly will stall the execution of other jobs or lock
+     * the daemon entirely.
+     *
+     * @see  Executors#getSequential()
+     */
+    SEQUENTIAL {
+      @Override
+      com.aoapps.concurrent.Executor getExecutor(Executors executors) {
+        return executors.getSequential();
+      }
+    },
 
-		/**
-		 * @see  Executors#getUnbounded()
-		 */
-		UNBOUNDED {
-			@Override
-			com.aoapps.concurrent.Executor getExecutor(Executors executors) {
-				return executors.getUnbounded();
-			}
-		};
+    /**
+     * @see  Executors#getUnbounded()
+     */
+    UNBOUNDED {
+      @Override
+      com.aoapps.concurrent.Executor getExecutor(Executors executors) {
+        return executors.getUnbounded();
+      }
+    };
 
-		abstract com.aoapps.concurrent.Executor getExecutor(Executors executors);
-	}
+    abstract com.aoapps.concurrent.Executor getExecutor(Executors executors);
+  }
 
-	/**
-	 * Gets the executor that should be used for this job.
-	 * <p>
-	 * Defaults to {@link Executor#UNBOUNDED}.
-	 * </p>
-	 */
-	default Executor getExecutor() {
-		return Executor.UNBOUNDED;
-	}
+  /**
+   * Gets the executor that should be used for this job.
+   * <p>
+   * Defaults to {@link Executor#UNBOUNDED}.
+   * </p>
+   */
+  default Executor getExecutor() {
+    return Executor.UNBOUNDED;
+  }
 
-	/**
-	 * Gets the Thread priority for this job.
-	 * <p>
-	 * Defaults to {@link Thread#NORM_PRIORITY}.
-	 * </p>
-	 *
-	 * @see  Thread#setPriority
-	 */
-	default int getThreadPriority() {
-		return Thread.NORM_PRIORITY;
-	}
+  /**
+   * Gets the Thread priority for this job.
+   * <p>
+   * Defaults to {@link Thread#NORM_PRIORITY}.
+   * </p>
+   *
+   * @see  Thread#setPriority
+   */
+  default int getThreadPriority() {
+    return Thread.NORM_PRIORITY;
+  }
 
-	/**
-	 * Performs the scheduled task.
-	 *
-	 * @see Schedule#isScheduled(int, int, int, int, int, int)
-	 */
-	void run(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year);
+  /**
+   * Performs the scheduled task.
+   *
+   * @see Schedule#isScheduled(int, int, int, int, int, int)
+   */
+  void run(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year);
 }

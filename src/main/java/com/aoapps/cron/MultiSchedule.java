@@ -30,30 +30,35 @@ package com.aoapps.cron;
  */
 public class MultiSchedule implements Schedule {
 
-	private final Iterable<? extends Schedule> schedules;
+  private final Iterable<? extends Schedule> schedules;
 
-	public MultiSchedule(Iterable<? extends Schedule> schedules) {
-		this.schedules = schedules;
-	}
+  public MultiSchedule(Iterable<? extends Schedule> schedules) {
+    this.schedules = schedules;
+  }
 
-	@Override
-	public String toString() {
-		// Java 8+: Use String.join
-		StringBuilder sb = new StringBuilder();
-		boolean didOne = false;
-		for(Schedule schedule : schedules) {
-			if(didOne) sb.append("; ");
-			else didOne = true;
-			sb.append(schedule);
-		}
-		return sb.toString();
-	}
+  @Override
+  public String toString() {
+    // Java 8+: Use String.join
+    StringBuilder sb = new StringBuilder();
+    boolean didOne = false;
+    for (Schedule schedule : schedules) {
+      if (didOne) {
+        sb.append("; ");
+      } else {
+        didOne = true;
+      }
+      sb.append(schedule);
+    }
+    return sb.toString();
+  }
 
-	@Override
-	public boolean isScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
-		for(Schedule schedule : schedules) {
-			if(schedule.isScheduled(minute, hour, dayOfMonth, month, dayOfWeek, year)) return true;
-		}
-		return false;
-	}
+  @Override
+  public boolean isScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
+    for (Schedule schedule : schedules) {
+      if (schedule.isScheduled(minute, hour, dayOfMonth, month, dayOfWeek, year)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

@@ -33,14 +33,14 @@ import java.util.Calendar;
 @FunctionalInterface
 public interface Schedule {
 
-	/**
-	 * Determine if the job should run right now.
-	 *
-	 * @param minute 0-59
-	 * @param hour 0-23
-	 * @param dayOfMonth 1-31
-	 * @param month 0-11
-	 * @param dayOfWeek 1-7, {@link Calendar#SUNDAY} through {@link Calendar#SATURDAY}
-	 */
-	boolean isScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year);
+  /**
+   * Determine if the job should run right now.
+   *
+   * @param minute 0-59
+   * @param hour 0-23
+   * @param dayOfMonth 1-31
+   * @param month 0-11
+   * @param dayOfWeek 1-7, {@link Calendar#SUNDAY} through {@link Calendar#SATURDAY}
+   */
+  boolean isScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year);
 }
