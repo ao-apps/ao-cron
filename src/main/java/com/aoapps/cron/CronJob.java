@@ -85,11 +85,11 @@ public interface CronJob {
      * @see  Executors#getPerProcessor()
      */
     PER_PROCESSOR {
-      @Override
-      com.aoapps.concurrent.Executor getExecutor(Executors executors) {
-        return executors.getPerProcessor();
-      }
-    },
+    @Override
+    com.aoapps.concurrent.Executor getExecutor(Executors executors) {
+      return executors.getPerProcessor();
+    }
+  },
 
     /**
      * This job will be executed on the main cron daemon thread.  This is

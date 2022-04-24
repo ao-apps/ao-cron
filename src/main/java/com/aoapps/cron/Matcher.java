@@ -69,6 +69,7 @@ public abstract class Matcher {
   }
 
   private static final Map<String, Integer> monthNameMap = AoCollections.newHashMap(23);
+
   static {
     monthNameMap.put("jan", 1);
     monthNameMap.put("january", 1);
@@ -104,6 +105,7 @@ public abstract class Matcher {
   }
 
   private static final Map<String, Integer> dayOfWeekNameMap = AoCollections.newHashMap(14);
+
   static {
     dayOfWeekNameMap.put("sun", 0);
     dayOfWeekNameMap.put("sunday", 0);
@@ -163,14 +165,14 @@ public abstract class Matcher {
     int pos = str.indexOf('/');
     if (pos != -1) {
       return new Step(
-        parseMatcher(
-          str.substring(0, pos),
-          minimum,
-          maximum,
-          modulus,
-          nameMap
-        ),
-        Integer.parseInt(str.substring(pos+1))
+          parseMatcher(
+              str.substring(0, pos),
+              minimum,
+              maximum,
+              modulus,
+              nameMap
+          ),
+          Integer.parseInt(str.substring(pos + 1))
       );
     }
 
@@ -183,11 +185,11 @@ public abstract class Matcher {
     pos = str.indexOf('-');
     if (pos != -1) {
       int begin = parseInt(str.substring(0, pos), nameMap);
-      if (begin<minimum || begin>maximum) {
+      if (begin < minimum || begin > maximum) {
         throw new IllegalArgumentException();
       }
-      int end = parseInt(str.substring(pos+1), nameMap);
-      if (end<minimum || end>maximum) {
+      int end = parseInt(str.substring(pos + 1), nameMap);
+      if (end < minimum || end > maximum) {
         throw new IllegalArgumentException();
       }
       return new Range(begin % modulus, end % modulus);
@@ -195,7 +197,7 @@ public abstract class Matcher {
 
     // Single value
     int value = parseInt(str, nameMap);
-    if (value<minimum || value>maximum) {
+    if (value < minimum || value > maximum) {
       throw new IllegalArgumentException();
     }
     return new Value(value % modulus);
@@ -215,8 +217,8 @@ public abstract class Matcher {
     @Override
     public String toString() {
       StringBuilder sb = new StringBuilder();
-      for (int i=0;i<list.length;i++) {
-        if (i>0) {
+      for (int i = 0; i < list.length; i++) {
+        if (i > 0) {
           sb.append(',');
         }
         sb.append(list[i]);
@@ -255,7 +257,7 @@ public abstract class Matcher {
 
     @Override
     public String toString() {
-      return matcher+"/"+step;
+      return matcher + "/" + step;
     }
 
     @Override
@@ -266,8 +268,8 @@ public abstract class Matcher {
     @Override
     public boolean matches(int value) {
       return
-        matcher.matches(value)
-        && ((value - matcher.getStepOffset()) % step) == 0
+          matcher.matches(value)
+              && ((value - matcher.getStepOffset()) % step) == 0
       ;
     }
   }
@@ -314,7 +316,7 @@ public abstract class Matcher {
 
     @Override
     public String toString() {
-      return begin+"-"+end;
+      return begin + "-" + end;
     }
 
     @Override

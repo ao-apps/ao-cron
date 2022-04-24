@@ -41,19 +41,19 @@ import java.util.StringTokenizer;
 public class MatcherSchedule implements Schedule {
 
   private static final Schedule YEARLY = (minute, hour, dayOfMonth, month, dayOfWeek, year) ->
-    minute == 0 && hour == 0 && dayOfMonth == 1 && month == Calendar.JANUARY;
+      minute == 0 && hour == 0 && dayOfMonth == 1 && month == Calendar.JANUARY;
 
   private static final Schedule MONTHLY = (minute, hour, dayOfMonth, month, dayOfWeek, year) ->
-    minute == 0 && hour == 0 && dayOfMonth == 1;
+      minute == 0 && hour == 0 && dayOfMonth == 1;
 
   private static final Schedule WEEKLY = (minute, hour, dayOfMonth, month, dayOfWeek, year) ->
-    minute == 0 && hour == 0 && dayOfWeek == Calendar.SUNDAY;
+      minute == 0 && hour == 0 && dayOfWeek == Calendar.SUNDAY;
 
   private static final Schedule DAILY = (minute, hour, dayOfMonth, month, dayOfWeek, year) ->
-    minute == 0 && hour == 0;
+      minute == 0 && hour == 0;
 
   private static final Schedule HOURLY = (minute, hour, dayOfMonth, month, dayOfWeek, year) ->
-    minute == 0;
+      minute == 0;
 
   /**
    * Parses an entire schedule.
@@ -119,11 +119,11 @@ public class MatcherSchedule implements Schedule {
   private final Matcher dayOfWeek;
 
   public MatcherSchedule(
-    Matcher minute,
-    Matcher hour,
-    Matcher dayOfMonth,
-    Matcher month,
-    Matcher dayOfWeek
+      Matcher minute,
+      Matcher hour,
+      Matcher dayOfMonth,
+      Matcher month,
+      Matcher dayOfWeek
   ) {
     this.minute = minute;
     this.hour = hour;
@@ -166,13 +166,13 @@ public class MatcherSchedule implements Schedule {
   @Override
   public boolean isScheduled(int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
     return
-      this.minute.matches(minute)
-      && this.hour.matches(hour)
-      && this.month.matches(1 + (month - Calendar.JANUARY))
-      && (
-        this.dayOfMonth.matches(dayOfMonth)
-        || this.dayOfWeek.matches(0 + (dayOfWeek - Calendar.SUNDAY))
-      )
+        this.minute.matches(minute)
+            && this.hour.matches(hour)
+            && this.month.matches(1 + (month - Calendar.JANUARY))
+            && (
+            this.dayOfMonth.matches(dayOfMonth)
+                || this.dayOfWeek.matches(0 + (dayOfWeek - Calendar.SUNDAY))
+        )
     ;
   }
 }

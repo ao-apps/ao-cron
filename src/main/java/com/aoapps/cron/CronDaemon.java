@@ -106,12 +106,12 @@ public final class CronDaemon {
 
           // If the minute hasn't changed, then system sleep is not very precise, sleep another second
           if (
-               minute     == lastMinute
-            && hour       == lastHour
-            && dayOfMonth == lastDayOfMonth
-            && month      == lastMonth
-            && dayOfWeek  == lastDayOfWeek
-            && year       == lastYear
+              minute     == lastMinute
+                  && hour       == lastHour
+                  && dayOfMonth == lastDayOfMonth
+                  && month      == lastMonth
+                  && dayOfWeek  == lastDayOfWeek
+                  && year       == lastYear
           ) {
             sleepTime = 1000;
           } else {
