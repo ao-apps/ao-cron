@@ -22,3 +22,6 @@ a88bd4e35a43065c05b09f88da2505aa4cec1856
 
 # Indents now tabs.
 f330d8df66c33b406b148036c910b1c3a85b9c6f
+
+# Performed automatic source code clean-up with rewrite-maven-plugin
+7a5fc5ade1b0858b8ae3757622ffef742fc80da1
