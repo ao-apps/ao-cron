@@ -83,6 +83,9 @@ public final class CronDaemon {
     private int lastDayOfWeek = Integer.MIN_VALUE;
     private int lastYear = Integer.MIN_VALUE;
 
+    private Task() {
+    }
+
     @Override
     @SuppressWarnings("TooBroadCatch")
     public void run() {

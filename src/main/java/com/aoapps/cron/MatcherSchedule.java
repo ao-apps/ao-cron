@@ -40,19 +40,19 @@ import java.util.StringTokenizer;
  */
 public class MatcherSchedule implements Schedule {
 
-  private static final Schedule YEARLY = (minute, hour, dayOfMonth, month, dayOfWeek, year) ->
+  private static final Schedule YEARLY = (int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) ->
       minute == 0 && hour == 0 && dayOfMonth == 1 && month == Calendar.JANUARY;
 
-  private static final Schedule MONTHLY = (minute, hour, dayOfMonth, month, dayOfWeek, year) ->
+  private static final Schedule MONTHLY = (int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) ->
       minute == 0 && hour == 0 && dayOfMonth == 1;
 
-  private static final Schedule WEEKLY = (minute, hour, dayOfMonth, month, dayOfWeek, year) ->
+  private static final Schedule WEEKLY = (int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) ->
       minute == 0 && hour == 0 && dayOfWeek == Calendar.SUNDAY;
 
-  private static final Schedule DAILY = (minute, hour, dayOfMonth, month, dayOfWeek, year) ->
+  private static final Schedule DAILY = (int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) ->
       minute == 0 && hour == 0;
 
-  private static final Schedule HOURLY = (minute, hour, dayOfMonth, month, dayOfWeek, year) ->
+  private static final Schedule HOURLY = (int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) ->
       minute == 0;
 
   /**
