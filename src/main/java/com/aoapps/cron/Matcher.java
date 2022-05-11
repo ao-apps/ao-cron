@@ -132,7 +132,7 @@ public abstract class Matcher {
   }
 
   /**
-   * Confirms all keys are lower-case, for assertions
+   * Confirms all keys are lower-case, for assertions.
    */
   private static boolean assertAllKeysLowerCase(Map<String, ?> map) {
     for (String key : map.keySet()) {
@@ -269,8 +269,7 @@ public abstract class Matcher {
     public boolean matches(int value) {
       return
           matcher.matches(value)
-              && ((value - matcher.getStepOffset()) % step) == 0
-      ;
+              && ((value - matcher.getStepOffset()) % step) == 0;
     }
   }
 

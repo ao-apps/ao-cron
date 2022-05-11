@@ -82,14 +82,17 @@ public interface CronJob {
   enum Executor {
 
     /**
+     * Executors bounded by the number of processors present in the system.
+     * This is best used for CPU-bound tasks.
+     *
      * @see  Executors#getPerProcessor()
      */
     PER_PROCESSOR {
-    @Override
-    com.aoapps.concurrent.Executor getExecutor(Executors executors) {
-      return executors.getPerProcessor();
-    }
-  },
+      @Override
+      com.aoapps.concurrent.Executor getExecutor(Executors executors) {
+        return executors.getPerProcessor();
+      }
+    },
 
     /**
      * This job will be executed on the main cron daemon thread.  This is
@@ -107,6 +110,9 @@ public interface CronJob {
     },
 
     /**
+     * Unbounded executors.
+     * This is more suited for I/O bound tasks.
+     *
      * @see  Executors#getUnbounded()
      */
     UNBOUNDED {

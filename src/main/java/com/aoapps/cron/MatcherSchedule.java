@@ -31,8 +31,9 @@ import java.util.StringTokenizer;
 /**
  * Parses a cron-like schedule line, including support for lists, steps, ranges, asterisks, names, and special strings.
  * This also extends the syntax to allow multiple cron-like schedules separated by semicolon (;).
- *
- * See man 5 crontab
+ * <p>
+ * See <code>man 5 crontab</code>
+ * </p>
  *
  * @see  CronJob
  *
@@ -85,27 +86,27 @@ public class MatcherSchedule implements Schedule {
       return HOURLY;
     }
     // Individual fields
-    StringTokenizer st = new StringTokenizer(str);
+    final StringTokenizer st = new StringTokenizer(str);
     if (!st.hasMoreTokens()) {
       throw new IllegalArgumentException();
     }
-    Matcher minute = Matcher.parseMinute(st.nextToken());
+    final Matcher minute = Matcher.parseMinute(st.nextToken());
     if (!st.hasMoreTokens()) {
       throw new IllegalArgumentException();
     }
-    Matcher hour = Matcher.parseHour(st.nextToken());
+    final Matcher hour = Matcher.parseHour(st.nextToken());
     if (!st.hasMoreTokens()) {
       throw new IllegalArgumentException();
     }
-    Matcher dayOfMonth = Matcher.parseDayOfMonth(st.nextToken());
+    final Matcher dayOfMonth = Matcher.parseDayOfMonth(st.nextToken());
     if (!st.hasMoreTokens()) {
       throw new IllegalArgumentException();
     }
-    Matcher month = Matcher.parseMonth(st.nextToken());
+    final Matcher month = Matcher.parseMonth(st.nextToken());
     if (!st.hasMoreTokens()) {
       throw new IllegalArgumentException();
     }
-    Matcher dayOfWeek = Matcher.parseDayOfWeek(st.nextToken());
+    final Matcher dayOfWeek = Matcher.parseDayOfWeek(st.nextToken());
     if (st.hasMoreTokens()) {
       throw new IllegalArgumentException();
     }
@@ -118,6 +119,9 @@ public class MatcherSchedule implements Schedule {
   private final Matcher month;
   private final Matcher dayOfWeek;
 
+  /**
+   * Creates a new matcher schedule.
+   */
   public MatcherSchedule(
       Matcher minute,
       Matcher hour,
@@ -172,7 +176,6 @@ public class MatcherSchedule implements Schedule {
             && (
             this.dayOfMonth.matches(dayOfMonth)
                 || this.dayOfWeek.matches(0 + (dayOfWeek - Calendar.SUNDAY))
-        )
-    ;
+        );
   }
 }

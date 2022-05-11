@@ -149,13 +149,6 @@ along with ao-cron.  If not, see <https://www.gnu.org/licenses/>.
           <release>11</release>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId><artifactId>maven-checkstyle-plugin</artifactId>
-        <configuration>
-          <!-- TODO: Clean-up Checkstyle -->
-          <failOnViolation>false</failOnViolation>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
 
