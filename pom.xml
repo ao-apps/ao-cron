@@ -29,7 +29,7 @@ along with ao-cron.  If not, see <https://www.gnu.org/licenses/>.
     <relativePath>../parent/pom.xml</relativePath>
   </parent>
 
-  <groupId>com.aoapps</groupId><artifactId>ao-cron</artifactId><version>3.0.2-SNAPSHOT</version>
+  <groupId>com.aoapps</groupId><artifactId>ao-cron</artifactId><version>3.0.2</version>
   <packaging>bundle</packaging>
 
   <properties>
@@ -83,7 +83,7 @@ along with ao-cron.  If not, see <https://www.gnu.org/licenses/>.
     <connection>scm:git:git://github.com/ao-apps/ao-cron.git</connection>
     <developerConnection>scm:git:git@github.com:ao-apps/ao-cron.git</developerConnection>
     <url>https://github.com/ao-apps/ao-cron</url>
-    <tag>HEAD</tag>
+    <tag>ao-cron-3.0.2</tag>
   </scm>
 
   <issueManagement>
