@@ -50,6 +50,7 @@ along with ao-cron.  If not, see <https://www.gnu.org/licenses/>.
       >
         <ul>
           <li>Specified task resubmit sleep delay on <code>ThreadDeath</code>.</li>
+          <li>Log when unable to resubmit task, which results on cron daemon dying.</li>
         </ul>
       </changelog:release>
     </c:if>

@@ -160,12 +160,19 @@ public final class CronDaemon {
         logger.log(Level.SEVERE, null, t);
         sleepTime = MAX_SLEEP_TIME / 2;
       } finally {
-        assert sleepTime > 0;
-        // Resubmit task in future
-        synchronized (lock) {
-          if (task == this && executors != null) {
-            future = executors.getUnbounded().submit(this, sleepTime);
+        try {
+          logger.log(Level.FINER, "Resubmitting task with sleepTime = {0}", sleepTime);
+          assert sleepTime > 0;
+          // Resubmit task in future
+          synchronized (lock) {
+            if (task == this && executors != null) {
+              future = executors.getUnbounded().submit(this, sleepTime);
+            }
           }
+        } catch (ThreadDeath td) {
+          throw td;
+        } catch (Throwable t) {
+          logger.log(Level.SEVERE, "Unable to resubmit task, cron daemon dying", t);
         }
       }
     }
