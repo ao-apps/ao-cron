@@ -154,6 +154,7 @@ public final class CronDaemon {
           }
         }
       } catch (ThreadDeath td) {
+        sleepTime = MAX_SLEEP_TIME / 2;
         throw td;
       } catch (Throwable t) {
         logger.log(Level.SEVERE, null, t);

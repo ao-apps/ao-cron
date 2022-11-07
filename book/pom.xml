@@ -29,7 +29,7 @@ along with ao-cron.  If not, see <https://www.gnu.org/licenses/>.
     <relativePath>../../parent/pom.xml</relativePath>
   </parent>
 
-  <groupId>com.aoapps</groupId><artifactId>ao-cron-book</artifactId><version>3.0.1-POST-SNAPSHOT</version>
+  <groupId>com.aoapps</groupId><artifactId>ao-cron-book</artifactId><version>3.0.2-SNAPSHOT</version>
   <packaging>bundle</packaging>
 
   <properties>
@@ -183,7 +183,7 @@ along with ao-cron.  If not, see <https://www.gnu.org/licenses/>.
         <groupId>com.aoapps</groupId><artifactId>ao-collections</artifactId><version>3.0.0${POST-SNAPSHOT}</version>
       </dependency>
       <dependency>
-        <groupId>com.aoapps</groupId><artifactId>ao-concurrent</artifactId><version>4.0.4${POST-SNAPSHOT}</version>
+        <groupId>com.aoapps</groupId><artifactId>ao-concurrent</artifactId><version>4.0.5-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
       </dependency>
       <dependency>
         <groupId>com.aoapps</groupId><artifactId>ao-encoding</artifactId><version>7.0.0${POST-SNAPSHOT}</version>

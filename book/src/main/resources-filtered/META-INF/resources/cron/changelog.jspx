@@ -37,7 +37,7 @@ along with ao-cron.  If not, see <https://www.gnu.org/licenses/>.
     shortTitle="Changelog"
     tocLevels="1"
     datePublished="2016-10-29T19:13:47-05:00"
-    dateModified="2022-02-15T22:38:25-06:00"
+    dateModified="2022-07-16T01:38:17-05:00"
   >
     <c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
       <changelog:release
@@ -47,7 +47,11 @@ along with ao-cron.  If not, see <https://www.gnu.org/licenses/>.
         artifactId="@{documented.artifactId}"
         repository="@{nexusUrl}content/repositories/snapshots/"
         scmUrl="@{project.scm.url}"
-      />
+      >
+        <ul>
+          <li>Specified task resubmit sleep delay on <code>ThreadDeath</code>.</li>
+        </ul>
+      </changelog:release>
     </c:if>
 
     <changelog:release
