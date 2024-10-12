@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2011, 2013, 2015, 2016, 2019, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016, 2019, 2020, 2021, 2022, 2024  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -42,6 +42,9 @@ public abstract class Matcher {
 
   abstract int getStepOffset();
 
+  /**
+   * Checks if matches the given value.
+   */
   public abstract boolean matches(int value);
 
   /**
@@ -210,6 +213,9 @@ public abstract class Matcher {
 
     private final Matcher[] list;
 
+    /**
+     * Creates a new {@link List}.
+     */
     public List(Collection<Matcher> list) {
       this.list = list.toArray(new Matcher[list.size()]);
     }
@@ -250,6 +256,9 @@ public abstract class Matcher {
     private final Matcher matcher;
     private final int step;
 
+    /**
+     * Creates a new {@link Step}.
+     */
     public Step(Matcher matcher, int step) {
       this.matcher = matcher;
       this.step = step;
@@ -280,6 +289,9 @@ public abstract class Matcher {
 
     private final int stepOffset;
 
+    /**
+     * Creates a new {@link Asterisk}.
+     */
     public Asterisk(int stepOffset) {
       this.stepOffset = stepOffset;
     }
@@ -308,6 +320,9 @@ public abstract class Matcher {
     private final int begin;
     private final int end;
 
+    /**
+     * Creates a new {@link Range}.
+     */
     public Range(int begin, int end) {
       this.begin = begin;
       this.end = end;
@@ -342,6 +357,9 @@ public abstract class Matcher {
 
     private final int value;
 
+    /**
+     * Creates a new {@link Value}.
+     */
     public Value(int value) {
       this.value = value;
     }
