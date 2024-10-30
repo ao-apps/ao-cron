@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2015, 2016, 2019, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2015, 2016, 2019, 2020, 2021, 2022, 2024  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -34,9 +34,8 @@ public interface CronJob {
 
   /**
    * Gets the name for this cron job.
-   * <p>
-   * Defaults to <code>{@linkplain Object#getClass() getClass()}.{@link Class#getName() getName()}</code>.
-   * </p>
+   *
+   * <p>Defaults to <code>{@linkplain Object#getClass() getClass()}.{@link Class#getName() getName()}</code>.</p>
    */
   default String getName() {
     return getClass().getName();
@@ -66,9 +65,8 @@ public interface CronJob {
 
   /**
    * Gets the job scheduling mode.
-   * <p>
-   * Defaults to {@link ScheduleMode#SKIP}.
-   * </p>
+   *
+   * <p>Defaults to {@link ScheduleMode#SKIP}.</p>
    *
    * @see  ScheduleMode
    */
@@ -127,9 +125,8 @@ public interface CronJob {
 
   /**
    * Gets the executor that should be used for this job.
-   * <p>
-   * Defaults to {@link Executor#UNBOUNDED}.
-   * </p>
+   *
+   * <p>Defaults to {@link Executor#UNBOUNDED}.</p>
    */
   default Executor getExecutor() {
     return Executor.UNBOUNDED;
@@ -137,9 +134,8 @@ public interface CronJob {
 
   /**
    * Gets the Thread priority for this job.
-   * <p>
-   * Defaults to {@link Thread#NORM_PRIORITY}.
-   * </p>
+   *
+   * <p>Defaults to {@link Thread#NORM_PRIORITY}.</p>
    *
    * @see  Thread#setPriority
    */
