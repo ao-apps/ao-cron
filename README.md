@@ -22,7 +22,7 @@ Java cron-like task scheduling library.
 * [Project Home](https://oss.aoapps.com/cron/)
 * [Changelog](https://oss.aoapps.com/cron/changelog)
 * [API Docs](https://oss.aoapps.com/cron/apidocs/)
-* [Maven Central Repository](https://central.sonatype.com/artifact/com.aoapps/ao-cron)
+* [Central Repository](https://central.sonatype.com/artifact/com.aoapps/ao-cron)
 * [GitHub](https://github.com/ao-apps/ao-cron)
 
 ## Evaluated Alternatives
