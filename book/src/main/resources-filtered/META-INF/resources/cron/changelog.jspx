@@ -37,7 +37,7 @@ along with ao-cron.  If not, see <https://www.gnu.org/licenses/>.
     shortTitle="Changelog"
     tocLevels="1"
     datePublished="2016-10-29T19:13:47-05:00"
-    dateModified="2025-07-02T23:05:45Z"
+    dateModified="2026-02-05T18:09:30Z"
   >
     <c:set var="latestRelease" value="3.0.2" />
     <c:if test="${
@@ -130,7 +130,7 @@ along with ao-cron.  If not, see <https://www.gnu.org/licenses/>.
         </li>
         <li>Gracefully ignoring calls to add or remove null CronJob.</li>
         <li>Default methods on CronJob interface.</li>
-        <li>Default CronJob thread priority changed to <ao:a rel="nofollow" href="@{javadoc.link.javase}java/lang/Thread.html#NORM_PRIORITY">Thread.NORM_PRIORITY</ao:a>.</li>
+        <li>Default CronJob thread priority changed to <ao:a rel="nofollow" href="@{documented.javadoc.link.javase}java.base/java/lang/Thread.html#NORM_PRIORITY">Thread.NORM_PRIORITY</ao:a>.</li>
         <li>
           Now using executors instead of threads, including cron jobs being able to select
           their executor class (per-processor, sequential, unbounded).
