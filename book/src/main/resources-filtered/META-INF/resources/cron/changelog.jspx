@@ -37,9 +37,9 @@ along with ao-cron.  If not, see <https://www.gnu.org/licenses/>.
     shortTitle="Changelog"
     tocLevels="1"
     datePublished="2016-10-29T19:13:47-05:00"
-    dateModified="2026-02-05T18:09:30Z"
+    dateModified="2026-02-06T00:00:53Z"
   >
-    <c:set var="latestRelease" value="3.0.2" />
+    <c:set var="latestRelease" value="3.1.0" />
     <c:if test="${
       fn:endsWith('@{project.version}', '-SNAPSHOT')
       and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')
@@ -51,12 +51,21 @@ along with ao-cron.  If not, see <https://www.gnu.org/licenses/>.
         groupId="@{project.groupId}"
         artifactId="@{documented.artifactId}"
         scmUrl="@{project.scm.url}"
-      >
-        <ul>
-          <li>Minimum Java version changed from 1.8 to 11.</li>
-        </ul>
-      </changelog:release>
+      />
     </c:if>
+
+    <changelog:release
+      projectName="@{documented.name}"
+      version="3.1.0"
+      datePublished="2026-02-06T00:00:53Z"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Minimum Java version changed from 1.8 to 11.</li>
+      </ul>
+    </changelog:release>
 
     <changelog:release
       projectName="@{documented.name}"

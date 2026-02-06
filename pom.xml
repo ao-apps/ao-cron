@@ -25,7 +25,7 @@ along with ao-cron.  If not, see <https://www.gnu.org/licenses/>.
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.aoapps</groupId><artifactId>ao-oss-parent</artifactId><version>1.26.0<!-- -POST-SNAPSHOT --></version>
+    <groupId>com.aoapps</groupId><artifactId>ao-oss-parent</artifactId><version>1.26.0-POST-SNAPSHOT</version>
     <relativePath>../parent/pom.xml</relativePath>
   </parent>
 
@@ -174,20 +174,20 @@ along with ao-cron.  If not, see <https://www.gnu.org/licenses/>.
     <dependencies>
       <!-- Direct -->
       <dependency>
-        <groupId>com.aoapps</groupId><artifactId>ao-collections</artifactId><version>4.0.0<!-- ${POST-SNAPSHOT} --></version>
+        <groupId>com.aoapps</groupId><artifactId>ao-collections</artifactId><version>4.0.0${POST-SNAPSHOT}</version>
       </dependency>
       <dependency>
-        <groupId>com.aoapps</groupId><artifactId>ao-concurrent</artifactId><version>4.1.0<!-- ${POST-SNAPSHOT} --></version>
+        <groupId>com.aoapps</groupId><artifactId>ao-concurrent</artifactId><version>4.1.0${POST-SNAPSHOT}</version>
       </dependency>
       <!-- Transitive -->
       <dependency>
-        <groupId>com.aoapps</groupId><artifactId>ao-hodgepodge</artifactId><version>5.4.0<!-- ${POST-SNAPSHOT} --></version>
+        <groupId>com.aoapps</groupId><artifactId>ao-hodgepodge</artifactId><version>5.4.0${POST-SNAPSHOT}</version>
       </dependency>
       <dependency>
-        <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId><version>5.7.0<!-- ${POST-SNAPSHOT} --></version>
+        <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId><version>5.7.0${POST-SNAPSHOT}</version>
       </dependency>
       <dependency>
-        <groupId>com.aoapps</groupId><artifactId>ao-tempfiles</artifactId><version>3.1.0<!-- ${POST-SNAPSHOT} --></version>
+        <groupId>com.aoapps</groupId><artifactId>ao-tempfiles</artifactId><version>3.1.0${POST-SNAPSHOT}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId><artifactId>commons-lang3</artifactId><version>3.20.0</version>
