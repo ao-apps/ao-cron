@@ -1,6 +1,6 @@
 /*
  * ao-cron - Java cron-like task scheduling library.
- * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013, 2015, 2016, 2018, 2019, 2020, 2021, 2022, 2024  AO Industries, Inc.
+ * Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013, 2015, 2016, 2018, 2019, 2020, 2021, 2022, 2024, 2026  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -99,21 +99,21 @@ public final class CronDaemon {
           }
           // Get the new minute
           gcal.setTimeInMillis(System.currentTimeMillis());
-          int minute     = gcal.get(Calendar.MINUTE);
-          int hour       = gcal.get(Calendar.HOUR_OF_DAY);
+          int minute = gcal.get(Calendar.MINUTE);
+          int hour = gcal.get(Calendar.HOUR_OF_DAY);
           int dayOfMonth = gcal.get(Calendar.DAY_OF_MONTH);
-          int month      = gcal.get(Calendar.MONTH);
-          int dayOfWeek  = gcal.get(Calendar.DAY_OF_WEEK);
-          int year       = gcal.get(Calendar.YEAR);
+          int month = gcal.get(Calendar.MONTH);
+          int dayOfWeek = gcal.get(Calendar.DAY_OF_WEEK);
+          int year = gcal.get(Calendar.YEAR);
 
           // If the minute hasn't changed, then system sleep is not very precise, sleep another second
           if (
-              minute     == lastMinute
-                  && hour       == lastHour
+              minute == lastMinute
+                  && hour == lastHour
                   && dayOfMonth == lastDayOfMonth
-                  && month      == lastMonth
-                  && dayOfWeek  == lastDayOfWeek
-                  && year       == lastYear
+                  && month == lastMonth
+                  && dayOfWeek == lastDayOfWeek
+                  && year == lastYear
           ) {
             sleepTime = 1000;
           } else {
@@ -135,12 +135,12 @@ public final class CronDaemon {
               }
             }
             // Record last minute to avoid possible repeat on imprecise timers.
-            lastMinute     = minute;
-            lastHour       = hour;
+            lastMinute = minute;
+            lastHour = hour;
             lastDayOfMonth = dayOfMonth;
-            lastMonth      = month;
-            lastDayOfWeek  = dayOfWeek;
-            lastYear       = year;
+            lastMonth = month;
+            lastDayOfWeek = dayOfWeek;
+            lastYear = year;
             // Find the time until the next minute starts.
             gcal.add(Calendar.MINUTE, 1);
             gcal.set(Calendar.SECOND, 0);
@@ -189,14 +189,14 @@ public final class CronDaemon {
     private final int year;
 
     private CronJobTask(CronJob job, Logger logger, int minute, int hour, int dayOfMonth, int month, int dayOfWeek, int year) {
-      this.job        = job;
-      this.logger     = logger;
-      this.minute     = minute;
-      this.hour       = hour;
+      this.job = job;
+      this.logger = logger;
+      this.minute = minute;
+      this.hour = hour;
       this.dayOfMonth = dayOfMonth;
-      this.month      = month;
-      this.dayOfWeek  = dayOfWeek;
-      this.year       = year;
+      this.month = month;
+      this.dayOfWeek = dayOfWeek;
+      this.year = year;
     }
 
     @Override
@@ -389,12 +389,12 @@ public final class CronDaemon {
    */
   public static void runImmediately(CronJob job) throws IllegalStateException {
     GregorianCalendar gcal = new GregorianCalendar();
-    int minute     = gcal.get(Calendar.MINUTE);
-    int hour       = gcal.get(Calendar.HOUR_OF_DAY);
+    int minute = gcal.get(Calendar.MINUTE);
+    int hour = gcal.get(Calendar.HOUR_OF_DAY);
     int dayOfMonth = gcal.get(Calendar.DAY_OF_MONTH);
-    int month      = gcal.get(Calendar.MONTH);
-    int dayOfWeek  = gcal.get(Calendar.DAY_OF_WEEK);
-    int year       = gcal.get(Calendar.YEAR);
+    int month = gcal.get(Calendar.MONTH);
+    int dayOfWeek = gcal.get(Calendar.DAY_OF_WEEK);
+    int year = gcal.get(Calendar.YEAR);
     synchronized (lock) {
       for (int i = 0, size = cronJobs.size(); i < size; i++) {
         if (job == cronJobs.get(i)) {
