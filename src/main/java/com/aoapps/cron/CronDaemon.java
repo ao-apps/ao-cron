@@ -156,7 +156,7 @@ public final class CronDaemon {
         sleepTime = MAX_SLEEP_TIME / 2;
         throw td;
       } catch (Throwable t) {
-        logger.log(Level.SEVERE, null, t);
+        logger.log(Level.SEVERE, "TODO: message here", t);
         sleepTime = MAX_SLEEP_TIME / 2;
       } finally {
         try {
