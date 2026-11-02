@@ -162,7 +162,7 @@ pipeline {
         axes {
           axis {
             name 'jdk'
-            values '11', '17', '21', '25', '26' // buildJdks
+            values '11', '17', '21', '25', '27' // buildJdks
           }
         }
         stages {
@@ -186,7 +186,7 @@ pipeline {
         axes {
           axis {
             name 'testJdk'
-            values '11', '17', '21', '25', '26' // testJdks
+            values '11', '17', '21', '25', '27' // testJdks
           }
         }
         stages {
@@ -210,7 +210,7 @@ pipeline {
         axes {
           axis {
             name 'testJdk'
-            values '11', '17', '21', '25', '26' // testJdks
+            values '11', '17', '21', '25', '27' // testJdks
           }
         }
         stages {
